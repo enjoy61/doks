@@ -11,14 +11,32 @@
           {{ if .HasChildren -}}
             <ul class="list-unstyled ms-3">
               {{ range .Children -}}
+
                 {{ if .HasChildren -}}
                   <h5 class="h6 text-uppercase mt-2 mb-2">{{ .Name }}</h5>
                   {{ if .HasChildren -}}
                     <ul class="list-unstyled ms-3">
                       {{ range .Children -}}
-                        {{- $active := or ($currentPage.IsMenuCurrent $section .) ($currentPage.HasMenuCurrent $section .) -}}
-                        {{- $active = or $active (eq $currentPage.Section .Identifier) -}}
-                        <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+
+                        {{ if .HasChildren -}}
+                          <h5 class="h6 text-uppercase mt-2 mb-2">{{ .Name }}</h5>
+                          {{ if .HasChildren -}}
+                            <ul class="list-unstyled ms-3">
+                              {{ range .Children -}}
+        
+                                {{- $active := or ($currentPage.IsMenuCurrent $section .) ($currentPage.HasMenuCurrent $section .) -}}
+                                {{- $active = or $active (eq $currentPage.Section .Identifier) -}}
+                                <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+        
+                              {{ end -}}
+                            </ul>
+                          {{ end -}}
+                        {{ else -}}
+                          {{- $active := or ($currentPage.IsMenuCurrent $section .) ($currentPage.HasMenuCurrent $section .) -}}
+                          {{- $active = or $active (eq $currentPage.Section .Identifier) -}}
+                          <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                        {{ end -}}
+
                       {{ end -}}
                     </ul>
                   {{ end -}}
@@ -27,6 +45,7 @@
                   {{- $active = or $active (eq $currentPage.Section .Identifier) -}}
                   <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
                 {{ end -}}
+
               {{ end -}}
             </ul>
           {{ end -}}
