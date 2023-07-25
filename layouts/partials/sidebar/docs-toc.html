@@ -20,7 +20,9 @@
   {{ if eq .Site.Params.options.scrollSpy true -}}
     {{ .TableOfContents | replaceRE "<nav id=\"TableOfContents\">" "<nav id=\"toc\">" | safeHTML }}
   {{ else -}}
+  <nav class="my-toc">
     {{ .TableOfContents }}
+  </nav>
   {{ end -}}
 </div>
 {{ end -}}

@@ -286,3 +286,9 @@ body {
     opacity: 0;
   }
 }
+
+.my-toc a.active {
+  color: $primary;
+  font-weight: 800;
+  transition: all .25s ease-in-out
+}
