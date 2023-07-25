@@ -25,3 +25,41 @@ function inactive() {
         a.classList.remove('active');
     });
 }
+
+let timer = null;
+window.onscroll = function () {
+  clearTimeout(timer);
+  timer = setTimeout(function () {
+    scroll_follow();
+  }, 300);
+};
+
+function scroll_follow() {
+  let res = document.querySelectorAll('.my-toc a.active');
+  if (res.length != 1) { return; }
+  let active_heading = res.item(0);
+
+  let count = 0, current = 0;
+  document.querySelectorAll('.my-toc a').forEach((a) => {
+    if (a == active_heading) {
+      current = count;
+    }
+    ++count;
+  });
+  ++current;
+  count /= 2;
+
+  let fullToc = document.querySelector('.docs-toc');
+  let myToc = document.querySelector('.my-toc');
+
+  let single = myToc.scrollHeight / count;
+  let offset = fullToc.scrollHeight - myToc.scrollHeight;
+  let max = parseInt((window.innerHeight - offset) / single);
+  let mid = parseInt(max / 2);
+
+  if (current >= max - mid) {
+    fullToc.scrollTop = single * (current - mid);
+  } else {
+    fullToc.scrollTop = 0;
+  }
+}
