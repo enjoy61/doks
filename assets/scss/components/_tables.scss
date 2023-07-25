@@ -1,5 +1,19 @@
-table {
-  @extend .table;
+// table {
+//   @extend .table;
 
-  margin: 3rem 0;
+//   margin: 3rem 0;
+// }
+
+table {
+  box-shadow: 2px 2px 3px rgba(0,0,0,.125);
+
+  tr th,
+  tr td {
+    padding: $padding-8 $padding-16;
+    border: $padding-1 solid $border-color;
+  }
+
+  tr th {
+    background: $gray-100;
+  }
 }

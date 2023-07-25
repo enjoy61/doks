@@ -584,3 +584,14 @@ $navbar-dark-active-color:          $link-color-dark;
 [data-dark-mode] .my-toc a.active {
   color: $link-color-dark;
 }
+
+[data-dark-mode] table {
+  tr th,
+  tr td {
+    border: $padding-1 solid $border-dark;
+  }
+
+  tr th {
+    background: $gray-800;
+   }
+}
