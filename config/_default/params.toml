@@ -98,12 +98,14 @@ lastMod = false
   searchSectionsIndex = []
   darkMode = true
   bootStrapJs = true
-  breadCrumb = false
+##  breadCrumb = false
+breadCrumb = true
   highLight = true
   kaTex = false
   multilingualMode = false
   docsVersioning = false
-  fullWidth = false
+##  fullWidth = false
+  fullWidth = true
   navbarSticky = true
   toTopButton = false
   scrollSpy = false # experimental; needs Bootstrap >= 5.2.0-beta1
