@@ -2,17 +2,20 @@
 
 // Source: https://material.io/design/color/dark-theme.html
 
-$body-bg-dark: $gray-900;
+// $body-bg-dark: $gray-900;
+$body-bg-dark: #23272D;
 $body-overlay-dark: darken($body-bg-dark, 2.5%);
 
 /*
 $border-dark: darken($body-bg-dark, 2.5%);
 */
 $border-dark: $gray-800;
-$body-color-dark: $gray-300;
+// $body-color-dark: $gray-300;
+$body-color-dark: #AFBAC6;
 $dots-dark: darken($body-color-dark, 50%);
 
-$link-color-dark: $blue-300;
+// $link-color-dark: $blue-300;
+$link-color-dark: #5B9252;
 $button-color-dark: $link-color-dark;
 $focus-color-dark: lighten($link-color-dark, 2.5%);
 
@@ -594,4 +597,8 @@ $navbar-dark-active-color:          $link-color-dark;
   tr th {
     background: $gray-800;
    }
+}
+
+[data-dark-mode] .header-bar {
+  border-image-source: linear-gradient(90deg, #5B9252, #5B9252 50%, #5B9252);
 }
