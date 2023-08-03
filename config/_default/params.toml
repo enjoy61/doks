@@ -1,10 +1,12 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Doks"
+## title = "Doks"
+title = "六一的部落格"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+## titleAddition = "Modern Documentation Theme"
+titleAddition = "唧唧跃阁子，朦月旷繁星。"
+## description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
 
 ## Documentation
 # docsVersion = "0.3"
