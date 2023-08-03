@@ -5,7 +5,20 @@
 // }
 
 table {
-  box-shadow: 2px 2px 3px rgba(0,0,0,.125);
+  @extend .table;
+  margin: 3rem 0;
+
+  overflow: auto;
+  display: block;
+
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  margin-top: $padding-24;
+  margin-bottom: $padding-32;
+
+//  max-width: 100%;
+//  box-shadow: 2px 2px 3px rgba(0,0,0,.125);
 
   tr th,
   tr td {
