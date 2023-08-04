@@ -1,8 +1,8 @@
 ---
-title: "胜固欣然，败亦可喜。"
+title: ""
 date: 2023-06-10T23:07:36
-lastmod: 2023-08-03T22:47:27+08:00
+lastmod: 2023-08-04T11:41:08+08:00
 draft: false
-weight: 1001
+weight: 2001
 image: ""
 ---
