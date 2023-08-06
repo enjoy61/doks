@@ -28,4 +28,5 @@ defaultMarkdownHandler = "goldmark"
   ordered = false
 ##  startLevel = 2
   startLevel = 1
+## 最多支持到4
   endLevel = 4
