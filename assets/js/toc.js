@@ -15,7 +15,8 @@ const MyToc = document.querySelector('.my-toc'),
         });
     }, options);
 
-document.querySelectorAll('h0[id],h1[id],h2[id],h3[id],h4[id]').forEach((heading) => {
+// 与endLevel一致    
+document.querySelectorAll('h0[id],h1[id],h2[id],h3[id]').forEach((heading) => {
     console.log(heading);
     headingObserver.observe(heading);
 });
