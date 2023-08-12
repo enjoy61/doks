@@ -1,9 +1,9 @@
 ---
 title: "org-mode"
 date: 2023-06-10T23:56:27
-lastmod: 2023-08-12T19:03:19+08:00
+lastmod: 2023-08-13T00:07:02+08:00
 draft: false
-weight: 1001
+weight: 1002
 ---
 
 ## 便签 {#便签}
@@ -550,5 +550,82 @@ Hello World!
 
 ```elisp
 #+STARTUP: showall hidestars        
+```
+
+
+## 函数 {#函数}
+
+
+### 去到所属标题 {#去到所属标题}
+
+```elisp
+(outline-up-heading 0)
+```
+
+
+### 去到上级标题, 不超过1级标题 {#去到上级标题-不超过1级标题}
+
+```elisp
+;; 所属标题的上级标题      
+(outline-up-heading 1)
+
+;; 所属标题的上上级母标题
+(outline-up-heading 2)
+```
+
+
+### 输出标题级别 {#输出标题级别}
+
+```elisp
+(outline-level)
+```
+
+
+### 比较 {#比较}
+
+```elisp
+(message "%s" (> (funcall outline-level) 1))
+```
+
+
+### 去到下一个标题 {#去到下一个标题}
+
+```elisp
+(outline-next-heading)
+```
+
+
+### 当前是否在标题行 {#当前是否在标题行}
+
+```elisp
+(outline-on-heading-p)
+```
+
+
+### 开启/关闭自动换行 {#开启-关闭自动换行}
+
+```elisp
+(toggle-truncate-lines)
+```
+
+
+### 行首 {#行首}
+
+```elisp
+(org-beginning-of-line)
+```
+
+
+### 删除行 {#删除行}
+
+```elisp
+(kill-line)
+```
+
+
+### 调整所在行的缩进 {#调整所在行的缩进}
+
+```elisp
+(indent-according-to-mode)
 ```
 
