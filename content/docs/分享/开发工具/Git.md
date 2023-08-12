@@ -1,7 +1,7 @@
 ---
 title: "Git"
 date: 2023-06-10T21:44:19
-lastmod: 2023-08-04T13:55:54+08:00
+lastmod: 2023-08-12T21:07:58+08:00
 draft: false
 weight: 1001
 ---
@@ -42,39 +42,52 @@ git -v
 
 ## 配置 {#配置}
 
-1.  查看Git配置 <br/>
-    ```bash
-    git config --list
-    ```
-2.  配置Git账户 <br/>
-    ```bash
-    git config --global user.name "enjoy61"
-    git config --global user.email "enjoy61@protonmail.com"
-    ```
-3.  配置SSH <br/>
-    
-    -   生成密钥 <br/>
-    
-    <!--listend-->
-    
+
+### 查看Git配置 {#查看git配置}
+
+```bash
+git config --list
+```
+
+
+### 配置Git账户 {#配置git账户}
+
+```bash
+git config --global user.name "enjoy61"
+git config --global user.email "enjoy61@protonmail.com"
+```
+
+
+### 配置SSH {#配置ssh}
+
+-   生成密钥 <br/>
     ```bash
     ssh-keygen
     cat ~/.ssh/id_rsa.pub
     ```
-    
-    -   拷贝公钥到Github <br/>
-4.  代理 <br/>
-    -   设置 <br/>
-        ```bash
-        # 使用代理端口替换1949
-        git config --global https.proxy https://localhost:1949
-        git config --global http.proxy http://localhost:1949
-        ```
-    -   取消 <br/>
-        ```bash
-        git config --global --unset http.proxy
-        git config --global --unset https.proxy
-        ```
+-   拷贝公钥到Github <br/>
+
+
+### 代理 {#代理}
+
+-   设置 <br/>
+    ```bash
+    # 使用代理端口替换1949
+    git config --global https.proxy https://localhost:1949
+    git config --global http.proxy http://localhost:1949
+    ```
+-   取消 <br/>
+    ```bash
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
+    ```
+
+
+### 中文乱码 {#中文乱码}
+
+```bash
+git config --global core.quotepath false
+```
 
 
 ## 初始化项目 {#初始化项目}

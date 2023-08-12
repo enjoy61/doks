@@ -1,7 +1,7 @@
 ---
 title: "使用Emacs做视频笔记"
 date: 2023-08-12T16:27:08
-lastmod: 2023-08-12T18:30:46+08:00
+lastmod: 2023-08-12T21:35:33+08:00
 draft: false
 weight: 2004
 ---
@@ -38,14 +38,14 @@ weight: 2004
 ## 需设置emms默认播放路径 {#需设置emms默认播放路径}
 
 ```elisp
-;; (setq-default my/emms-source-file-default-directory "~/Movies")
+;; (setq my/movie-path "path/to/movie")
 ```
 
 
 ## 需设置视频根目录 {#需设置视频根目录}
 
 ```elisp
-;; (setq-default my/video-path "~/视频")
+;; (setq my/video-path "path/to/video")
 ```
 
 
@@ -59,7 +59,7 @@ weight: 2004
   :config
   (setq emms-player-list '(emms-player-mpv)
         emms-info-function '(emms-info-native)
-        emms-source-file-default-directory my/emms-source-file-default-directory
+        emms-source-file-default-directory my/movie-path
         emms-seek-seconds 5)
   :bind (("C-c e SPC" . emms-pause)
          ("C-c e f" . emms-seek-forward)

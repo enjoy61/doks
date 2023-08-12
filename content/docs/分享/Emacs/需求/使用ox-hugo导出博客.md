@@ -1,7 +1,7 @@
 ---
 title: "使用ox-hugo导出博客"
 date: 2023-08-12T16:36:21
-lastmod: 2023-08-12T18:34:11+08:00
+lastmod: 2023-08-12T21:35:33+08:00
 draft: false
 weight: 2005
 ---
@@ -153,15 +153,16 @@ weight: 2005
 ## org-roam {#org-roam}
 
 
+### 需设置相对路径 {#需设置相对路径}
+
+```elisp
+;; (setq my/roam-prefix "hugo/content/")
+```
+
+
 ### 将roam节点链接替换为博客+标题链接 {#将roam节点链接替换为博客-plus-标题链接}
 
--   相对路径计算采用去除前缀 <br/>
--   需设置相对路径 <br/>
-    ```elisp
-    ;; (setq-default my/roam-prefix "content/")
-    ```
-
-<!--listend-->
+相对路径计算采用去除前缀 <br/>
 
 ```elisp
 (defun my/replace-roam-link ()
