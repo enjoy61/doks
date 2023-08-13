@@ -64,3 +64,51 @@ function scroll_follow() {
     fullToc.scrollTop = 0;
   }
 }
+
+var tCur1 = new Array();
+var tCur2 = new Array();
+document.addEventListener('DOMContentLoaded', () => {
+  var cur = -100;
+  var picSize = 205;
+  var lis = document.querySelectorAll('#scrollpic1 li');
+  var len = lis.length;
+  for (var i = 0; i < len; ++i) {
+    tCur1[i] = cur + i * picSize;
+  }
+
+  lis = document.querySelectorAll('#scrollpic2 li');
+  len = lis.length;
+  for (var i = 0; i < len; ++i) {
+    tCur2[i] = cur + i * picSize;
+  }
+})
+
+var te = 2000;
+var ts = -460;
+function setMarginLeft() {
+  var lis1 = document.querySelectorAll('#scrollpic1 li');
+  var lis2 = document.querySelectorAll('#scrollpic2 li');
+  var len = lis1.length;
+  for (var i = 0; i < len; ++i) {
+    tCur1[i] += 0.2;
+    if (tCur1[i] > te)
+      tCur1[i] -= te - ts;
+    var tValue1 = tCur1[i] + 'px';
+    var tStr1 = 'translateX(' + tValue1 + ')';
+    lis1[i].style.setProperty('transform', tStr1);
+  }
+
+  len = lis2.length;
+  for (var i = 0; i < len; ++i) {
+    tCur2[i] -= 0.2;
+    if (tCur2[i] < ts)
+      tCur2[i] += te - ts;
+    var tValue2 = tCur2[i] + 'px';
+    var tStr2 = 'translateX(' + tValue2 + ')';
+    lis2[i].style.setProperty('transform', tStr2);
+  }
+}
+
+let scrollTimer = window.setInterval(function () {
+  setMarginLeft();
+}, 5);

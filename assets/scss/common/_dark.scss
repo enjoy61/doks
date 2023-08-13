@@ -2,30 +2,34 @@
 
 // Source: https://material.io/design/color/dark-theme.html
 
-// $body-bg-dark: $gray-900;
-// $body-bg-dark: #23272D;
-$body-bg-dark: #212121;
+$zdoc-bg-dark: #212121;
+$zdoc-header-bg-dark: #403e41;
+$zdoc-border-dark: #413f42;
+$zdoc-primary-dark: #f9718f;
+$zdoc-content-dark: #f8d778;
+$zdoc-highlight-dark: #acc883;
+$zdoc-header-bar-dark: darken($zdoc-content-dark, 10%);
+
+$body-bg-dark: $zdoc-bg-dark;
 $body-overlay-dark: darken($body-bg-dark, 2.5%);
 
 /*
 $border-dark: darken($body-bg-dark, 2.5%);
 */
-// $border-dark: $gray-800;
-$border-dark: #413F42;
+$border-dark: $zdoc-border-dark;
 
 // $body-color-dark: $gray-300;
-// $body-color-dark: #AFBAC6;
 $body-color-dark: white;
 $dots-dark: darken($body-color-dark, 50%);
 
 // $link-color-dark: $blue-300;
-// $link-color-dark: #5B9252;
-$link-color-dark: #F9718F;
-// $link-color-dark: #ACC883;
+$link-color-dark: $zdoc-primary-dark;
+
 // $button-color-dark: $link-color-dark;
 
 // get-started
-$button-color-dark: #F8D778;
+// $button-color-dark: $link-color-dark;
+$button-color-dark: $zdoc-content-dark;
 
 $focus-color-dark: lighten($link-color-dark, 2.5%);
 
@@ -40,9 +44,10 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $body-color-dark;
 }
 
+// 正文链接
 [data-dark-mode] body a {
-  color: $link-color-dark;
-  color: #F8D778;
+  // color: $link-color-dark;
+  color: $zdoc-content-dark;
 }
 
 [data-dark-mode] body a.text-body {
@@ -97,7 +102,8 @@ $navbar-dark-active-color:          $link-color-dark;
 
 // 标题栏
 [data-dark-mode] body .navbar {
-  background: #403E41;
+  // background: $body-bg-dark;
+  background: $zdoc-header-bg-dark;
   border-bottom: 1px solid $border-dark;
 }
 
@@ -123,8 +129,10 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $link-color-dark;
 }
 
+// 标题高亮
 [data-dark-mode] body .offcanvas .nav-link.active {
-  color: $link-color-dark;
+  // color: $link-color-dark;
+  color: $zdoc-highlight-dark;
 }
 
 [data-dark-mode] body .navbar-light .navbar-brand {
@@ -228,7 +236,7 @@ $navbar-dark-active-color:          $link-color-dark;
 // 目录结构
 [data-dark-mode] body .btn-toggle-nav a.active {
   // color: $link-color-dark;
-  color: #ACC883;
+  color: $zdoc-highlight-dark;
 }
 
 [data-dark-mode] body .navbar-light .navbar-text a {
@@ -602,9 +610,10 @@ $navbar-dark-active-color:          $link-color-dark;
   border: 1px solid $body-overlay-dark;
 }
 
+// 文章结构
 [data-dark-mode] .my-toc a.active {
   // color: $link-color-dark;
-  color: #ACC883;
+  color: $zdoc-highlight-dark;
 }
 
 [data-dark-mode] table {
@@ -620,22 +629,21 @@ $navbar-dark-active-color:          $link-color-dark;
 }
 
 [data-dark-mode] .header-bar {
-  // border-image-source: linear-gradient(90deg, #5B9252, #5B9252 50%, #5B9252);
-  border-image-source: linear-gradient(90deg, #403e41, #403e41 50%, #403e41);
+  border-image-source: linear-gradient(90deg, $zdoc-header-bar-dark, $zdoc-header-bar-dark 50%, $zdoc-header-bar-dark);
 }
 
 // 正文
 [data-dark-mode] .docs-content {
-  background: #212121;
+  background: $body-bg-dark;
 }
 
 // 目录结构
 [data-dark-mode] .docs-sidebar {
-  background: #212121;
+  background: $body-bg-dark;
 }
 
 // 文章结构
 [data-dark-mode] .docs-toc {
-  background: #212121;
+  background: $body-bg-dark;
   border-left: 1px solid #413F42;
 }

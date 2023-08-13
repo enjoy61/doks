@@ -30,3 +30,29 @@ table {
     background: $gray-100;
   }
 }
+
+.imageList {
+  height: 158px;
+  perspective: 2000px;
+
+  ul {    
+    overflow: hidden;
+  }
+    
+  ul li {
+    width: 200px;
+    height: 100%;
+    padding: 2px 2px;
+
+    position: fixed;
+
+    // li显示在一行
+    display: inline-block;
+
+    // 去除小黑点
+    // overflow: hidden;
+
+    // 四个角圆润
+    // border-radius: 5px;
+  }
+}
