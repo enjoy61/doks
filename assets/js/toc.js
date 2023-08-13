@@ -58,53 +58,60 @@ function scroll_follow() {
   let max = parseInt((window.innerHeight - offset) / single);
   let mid = parseInt(max / 2);
 
-  if (current >= max - mid) {
-    fullToc.scrollTop = single * (current - mid);
+  let scrollLimit = 5;
+  if (scrollLimit > mid)
+    scrollLimit = mid;
+  let scrollAlready = 0;
+  if (current - scrollAlready > scrollLimit) {
+    scrollAlready = current - scrollLimit;
+    fullToc.scrollTop = single * scrollAlready;
   } else {
     fullToc.scrollTop = 0;
   }
 }
 
-var tCur1 = new Array();
-var tCur2 = new Array();
+let tCur1 = new Array();
+let tCur2 = new Array();
 document.addEventListener('DOMContentLoaded', () => {
-  var cur = -100;
-  var picSize = 205;
-  var lis = document.querySelectorAll('#scrollpic1 li');
-  var len = lis.length;
-  for (var i = 0; i < len; ++i) {
+  let cur = -100;
+  let picSize = 205;
+  let lis = document.querySelectorAll('#scrollpic1 li');
+  let len = lis.length;
+  let i = 0;
+  for (i = 0; i < len; ++i) {
     tCur1[i] = cur + i * picSize;
   }
 
   lis = document.querySelectorAll('#scrollpic2 li');
   len = lis.length;
-  for (var i = 0; i < len; ++i) {
+  for (i = 0; i < len; ++i) {
     tCur2[i] = cur + i * picSize;
   }
 })
 
-var te = 2000;
-var ts = -460;
+let te = 2000;
+let ts = -460;
 function setMarginLeft() {
-  var lis1 = document.querySelectorAll('#scrollpic1 li');
-  var lis2 = document.querySelectorAll('#scrollpic2 li');
-  var len = lis1.length;
-  for (var i = 0; i < len; ++i) {
+  let lis1 = document.querySelectorAll('#scrollpic1 li');
+  let lis2 = document.querySelectorAll('#scrollpic2 li');
+  let len = lis1.length;
+  let i = 0;
+  for ( i = 0; i < len; ++i) {
     tCur1[i] += 0.2;
     if (tCur1[i] > te)
       tCur1[i] -= te - ts;
-    var tValue1 = tCur1[i] + 'px';
-    var tStr1 = 'translateX(' + tValue1 + ')';
+    let tValue1 = tCur1[i] + 'px';
+    let tStr1 = 'translateX(' + tValue1 + ')';
     lis1[i].style.setProperty('transform', tStr1);
   }
 
   len = lis2.length;
-  for (var i = 0; i < len; ++i) {
+  for (i = 0; i < len; ++i) {
     tCur2[i] -= 0.2;
     if (tCur2[i] < ts)
       tCur2[i] += te - ts;
-    var tValue2 = tCur2[i] + 'px';
-    var tStr2 = 'translateX(' + tValue2 + ')';
+    let tValue2 = tCur2[i] + 'px';
+    let tStr2 = 'translateX(' + tValue2 + ')';
     lis2[i].style.setProperty('transform', tStr2);
   }
 }
