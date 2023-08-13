@@ -33,17 +33,16 @@ table {
 
 .imageList {
   height: 158px;
-  perspective: 2000px;
+  overflow: hidden;
 
-  ul {    
-    overflow: hidden;
-  }
-    
+  // 边框 + 固定
+  perspective: 2000px;
+  
   ul li {
     width: 200px;
-    height: 100%;
     padding: 2px 2px;
 
+    // fixed或absolute, li不自动换行
     position: fixed;
 
     // li显示在一行

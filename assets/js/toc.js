@@ -70,52 +70,33 @@ function scroll_follow() {
   }
 }
 
-let tCur1 = new Array();
-let tCur2 = new Array();
-document.addEventListener('DOMContentLoaded', () => {
-  let cur = -100;
-  let picSize = 205;
-  let lis = document.querySelectorAll('#scrollpic1 li');
-  let len = lis.length;
+let frontEnd = 2000;
+let backEnd = -460;
+let picSize = 205;
+let step = 0.2;
+
+function setMarginLeft(id, cur) {
+  let list = document.querySelectorAll(id);
+  let len = list.length;
   let i = 0;
-  for (i = 0; i < len; ++i) {
-    tCur1[i] = cur + i * picSize;
-  }
+  for (; i < len; ++i) {
+    let thisCur = cur + i * picSize;
+    
+    if (thisCur > frontEnd)
+      thisCur -= frontEnd - backEnd;
+    else if (thisCur < backEnd)
+      thisCur += frontEnd - backEnd;
 
-  lis = document.querySelectorAll('#scrollpic2 li');
-  len = lis.length;
-  for (i = 0; i < len; ++i) {
-    tCur2[i] = cur + i * picSize;
-  }
-})
-
-let te = 2000;
-let ts = -460;
-function setMarginLeft() {
-  let lis1 = document.querySelectorAll('#scrollpic1 li');
-  let lis2 = document.querySelectorAll('#scrollpic2 li');
-  let len = lis1.length;
-  let i = 0;
-  for ( i = 0; i < len; ++i) {
-    tCur1[i] += 0.2;
-    if (tCur1[i] > te)
-      tCur1[i] -= te - ts;
-    let tValue1 = tCur1[i] + 'px';
-    let tStr1 = 'translateX(' + tValue1 + ')';
-    lis1[i].style.setProperty('transform', tStr1);
-  }
-
-  len = lis2.length;
-  for (i = 0; i < len; ++i) {
-    tCur2[i] -= 0.2;
-    if (tCur2[i] < ts)
-      tCur2[i] += te - ts;
-    let tValue2 = tCur2[i] + 'px';
-    let tStr2 = 'translateX(' + tValue2 + ')';
-    lis2[i].style.setProperty('transform', tStr2);
+    let value = 'translateX(' + thisCur + 'px)';
+    list[i].style.setProperty('transform', value);
   }
 }
 
+let cur1 = 0;
+let cur2 = 0;
 let scrollTimer = window.setInterval(function () {
-  setMarginLeft();
+  cur1 = (cur1 + step) % (frontEnd - backEnd); // 0 ~ (frontEnd - backEnd)
+  cur2 = (cur2 - step) % (frontEnd - backEnd); // (backEnd - frontEnd) ~ 0
+  setMarginLeft('#scrollpic1 li', cur1);
+  setMarginLeft('#scrollpic2 li', cur2);
 }, 5);
