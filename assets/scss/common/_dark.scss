@@ -8,10 +8,17 @@ $zdoc-border-dark: #413f42;
 $zdoc-primary-dark: #f9718f;
 $zdoc-content-dark: #f8d778;
 $zdoc-highlight-dark: #acc883;
-// $zdoc-header-bar-dark: darken($zdoc-content-dark, 10%);
+$zdoc-block-dark: #57503b;
+$zdoc-overlay-dark: #2a2c37;
+$zdoc-table-header-dark: #2d2a2e;
+$zdoc-table-data-dark: $zdoc-bg-dark;
 $zdoc-header-bar-dark: $zdoc-header-bg-dark;
+
 $body-bg-dark: $zdoc-bg-dark;
-$body-overlay-dark: darken($body-bg-dark, 2.5%);
+
+// 搜索框，文本块和未识别语言的代码块等
+// $body-overlay-dark: darken($body-bg-dark, 2.5%);
+$body-overlay-dark: $zdoc-overlay-dark;
 
 /*
 $border-dark: darken($body-bg-dark, 2.5%);
@@ -277,6 +284,7 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $navbar-dark-active-color;
 }
 
+// 搜索框
 [data-dark-mode] body .form-control.is-search {
   background: $body-overlay-dark;
   border: 1px solid transparent;
@@ -338,8 +346,10 @@ $navbar-dark-active-color:          $link-color-dark;
   background: $gray-400;
 }
 
+// 文本块和代码块未识别语言
 [data-dark-mode] body code:not(.hljs) {
-  background: $body-overlay-dark;
+  // background: $body-overlay-dark;
+  background: $zdoc-block-dark;
   color: $body-color-dark;
 }
 
@@ -620,11 +630,11 @@ $navbar-dark-active-color:          $link-color-dark;
   tr th,
   tr td {
     border: $padding-1 solid $border-dark;
-    background: #212121;
+    background: $zdoc-table-data-dark;
   }
 
   tr th {
-    background: #2C2A2E;
+    background: $zdoc-table-header-dark;
    }
 }
 

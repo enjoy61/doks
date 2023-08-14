@@ -75,7 +75,7 @@ let backEnd = -460;
 let picSize = 205;
 let step = 0.2;
 
-function setMarginLeft(id, cur) {
+function translatePic(id, cur) {
   let list = document.querySelectorAll(id);
   let len = list.length;
   let i = 0;
@@ -97,6 +97,6 @@ let cur2 = 0;
 let scrollTimer = window.setInterval(function () {
   cur1 = (cur1 + step) % (frontEnd - backEnd); // 0 ~ (frontEnd - backEnd)
   cur2 = (cur2 - step) % (frontEnd - backEnd); // (backEnd - frontEnd) ~ 0
-  setMarginLeft('#scrollpic1 li', cur1);
-  setMarginLeft('#scrollpic2 li', cur2);
+  translatePic('#scrollpic1 li', cur1);
+  translatePic('#scrollpic2 li', cur2);
 }, 5);

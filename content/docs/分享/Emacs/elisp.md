@@ -1,7 +1,7 @@
 ---
-title: "EmacsLisp"
+title: "elisp"
 date: 2023-08-12T23:48:25
-lastmod: 2023-08-13T00:06:53+08:00
+lastmod: 2023-08-14T13:17:22+08:00
 draft: false
 weight: 1003
 ---

@@ -37,6 +37,7 @@ hljs.registerLanguage('csharp', csharp);
 
 import scss from 'highlight.js/lib/languages/scss';
 hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('css', scss);
 
 import lua from 'highlight.js/lib/languages/lua';
 hljs.registerLanguage('lua', lua);
