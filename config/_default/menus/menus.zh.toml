@@ -9,21 +9,27 @@
   weight = 20
 
 [[main]]
-  name = "关于"
+  name = "书签"
+  url = "/bookmark/"
+  identifier = "bookmark"
   weight = 30
+
+[[main]]
+  name = "关于"
+  weight = 40
   identifier = "about"
   url = "/about/"
 
 [[main]]
   name = "技能树"
-  weight = 40
+  weight = 41
   identifier = "skill-tree"
   url = "/about/skill-tree/"
   parent = "about"
 
 [[main]]
   name = "Hobby"
-  weight = 50
+  weight = 42
   identifier = "hobby"
   url = "/about/hobby/"
   parent = "about"
