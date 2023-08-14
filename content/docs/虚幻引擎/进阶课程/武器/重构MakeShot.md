@@ -1,14 +1,14 @@
 ---
 title: "重构MakeShot"
 date: 2023-08-11T18:23:16
-lastmod: 2023-08-14T18:22:37+08:00
+lastmod: 2023-08-14T18:37:12+08:00
 draft: false
 weight: 1007
 ---
 
 ## 说明 {#说明}
 
--   本节使用的重构被称作the extract method, 将函数切分, 使得代码可读性更高 <br/>
+-   本节使用的重构被称作提取 `The Extract Method` , 将函数切分, 使得代码可读性更高 <br/>
 -   对武器类的MakeShot重构 <br/>
 -   纯理论逻辑放在protected, 供派生类调用 <br/>
 
