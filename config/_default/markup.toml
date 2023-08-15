@@ -26,7 +26,6 @@ defaultMarkdownHandler = "goldmark"
 [tableOfContents]
 ##  endLevel = 3
   ordered = false
-##  startLevel = 2
-  startLevel = 1
+  startLevel = 2
 ## 最多支持到4
   endLevel = 3

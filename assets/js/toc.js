@@ -25,7 +25,7 @@ function refreshHighlight() {
 
 const intersectionOptions = {
   threshold: 1.0
-}
+};
 
 // 监听的标题级别与toc的startLevel和endLevel一致    
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toc.length === headings.length) {
     addHeadingIdx(toc);
     addHeadingIdx(headings);
+
+    headingFlag = new Array(headings.length).fill(false);
 
     const headingObserver = new IntersectionObserver(headings => {
       headings.forEach(heading => {
@@ -51,8 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     headings.forEach((heading) => {
       headingObserver.observe(heading);
     });
-
-    headingFlag = new Array(headings.length).fill(false);
   }
 });
 
