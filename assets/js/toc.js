@@ -1,32 +1,62 @@
-let options = {
-    root: document.querySelector('#article'),
-    rootMargin: '0px 0px -75%',
-    threshold: 1.0
+// 高亮
+function addHeadingIdx(list) {
+  let i = 0;
+  list.forEach((item) => {
+    item.setAttribute('headingIdx', i++);
+  });
 }
 
-const MyToc = document.querySelector('.my-toc'),
-    headingObserver = new IntersectionObserver(headings => {
-        headings.forEach(heading => {
-            const id = heading.target.getAttribute('id');
-            if (heading.isIntersecting) {
-                inactive();
-                subItem = document.querySelector(`.my-toc a[href="#${id}"]`).classList.add('active');
-            }
-        });
-    }, options);
+let headingFlag;// = new Array();
+let headingCnt = 0;
 
-// 与endLevel一致    
-document.querySelectorAll('h0[id],h1[id],h2[id],h3[id]').forEach((heading) => {
-    console.log(heading);
-    headingObserver.observe(heading);
+function refreshHighlight() {
+  headingCnt = 0;
+  for (var i = 0; i < headingFlag.length; ++i) {
+    if (headingFlag[i]) {
+      headingCnt++;
+      document.querySelector(`.my-toc a[headingIdx="${i}"]`).classList.add('active');
+    }
+    else
+    {
+      document.querySelector(`.my-toc a[headingIdx="${i}"]`).classList.remove('active');
+    }
+  }
+}
+
+const intersectionOptions = {
+  threshold: 1.0
+}
+
+// 监听的标题级别与toc的startLevel和endLevel一致    
+document.addEventListener('DOMContentLoaded', () => {
+  const headings = Array.apply(null, document.querySelectorAll('h2[id], h3[id]')).filter(function (value, index, arr) {
+    return arr[index].querySelector('.anchor');
+  });
+  const toc = document.querySelector('.my-toc').querySelectorAll('a');
+
+  if (toc.length === headings.length) {
+    addHeadingIdx(toc);
+    addHeadingIdx(headings);
+
+    const headingObserver = new IntersectionObserver(headings => {
+      headings.forEach(heading => {
+        // console.log('ratio', heading.target.getAttribute('id'), heading.intersectionRatio, heading.isIntersecting, headingCnt);
+        const idx = heading.target.getAttribute('headingIdx');
+        if ((headingFlag[idx] = heading.isIntersecting) || (headingCnt !== 1)) {
+          refreshHighlight();
+        }
+      });
+    }, intersectionOptions); 
+
+    headings.forEach((heading) => {
+      headingObserver.observe(heading);
+    });
+
+    headingFlag = new Array(headings.length).fill(false);
+  }
 });
 
-function inactive() {
-    document.querySelectorAll('.my-toc a').forEach((a) => {
-        a.classList.remove('active');
-    });
-}
-
+// 跟随滚动
 let timer = null;
 window.onscroll = function () {
   clearTimeout(timer);
