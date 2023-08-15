@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 跟随滚动
 const followTimerInterval = 300;
-let headingHeight, UpIdx;
+let headingHeight, upIdx;
 let followTimer = null;
 
 function computeHeadingHeight() {
