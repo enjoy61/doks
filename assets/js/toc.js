@@ -1,4 +1,7 @@
 // 高亮
+let headingFlag;
+let headingCnt;
+
 function addHeadingIdx(list) {
   let i = 0;
   list.forEach((item) => {
@@ -6,12 +9,9 @@ function addHeadingIdx(list) {
   });
 }
 
-let headingFlag;// = new Array();
-let headingCnt = 0;
-
 function refreshHighlight() {
   headingCnt = 0;
-  for (var i = 0; i < headingFlag.length; ++i) {
+  for (let i = 0; i < headingFlag.length; ++i) {
     if (headingFlag[i]) {
       headingCnt++;
       document.querySelector(`.my-toc a[headingIdx="${i}"]`).classList.add('active');
@@ -23,93 +23,99 @@ function refreshHighlight() {
   }
 }
 
-const intersectionOptions = {
-  threshold: 1.0
-};
-
-// 监听的标题级别与toc的startLevel和endLevel一致    
 document.addEventListener('DOMContentLoaded', () => {
+  const toc = document.querySelector('.my-toc');
+  if (!toc) return;
+
+  const tocHeadings = toc.querySelectorAll('a');
   const headings = Array.apply(null, document.querySelectorAll('h2[id], h3[id]')).filter(function (value, index, arr) {
     return arr[index].querySelector('.anchor');
   });
-  const toc = document.querySelector('.my-toc').querySelectorAll('a');
 
-  if (toc.length === headings.length) {
-    addHeadingIdx(toc);
-    addHeadingIdx(headings);
+  if (tocHeadings.length !== headings.length) return;
 
-    headingFlag = new Array(headings.length).fill(false);
+  addHeadingIdx(tocHeadings);
+  addHeadingIdx(headings);
 
-    const headingObserver = new IntersectionObserver(headings => {
-      headings.forEach(heading => {
-        // console.log('ratio', heading.target.getAttribute('id'), heading.intersectionRatio, heading.isIntersecting, headingCnt);
-        const idx = heading.target.getAttribute('headingIdx');
-        if ((headingFlag[idx] = heading.isIntersecting) || (headingCnt !== 1)) {
-          refreshHighlight();
-        }
-      });
-    }, intersectionOptions); 
+  headingFlag = new Array(headings.length).fill(false);
+  headingCnt = 0;
 
-    headings.forEach((heading) => {
-      headingObserver.observe(heading);
+  const intersectionOptions = {
+    threshold: 1.0
+  };
+
+  const headingObserver = new IntersectionObserver(headings => {
+    headings.forEach(heading => {
+      // console.log('ratio', heading.target.getAttribute('id'), heading.intersectionRatio, heading.isIntersecting, headingCnt);
+      const idx = heading.target.getAttribute('headingIdx');
+      if ((headingFlag[idx] = heading.isIntersecting) || (headingCnt !== 1)) {
+        refreshHighlight();
+      }
     });
-  }
+  }, intersectionOptions); 
+
+  headings.forEach((heading) => {
+    headingObserver.observe(heading);
+  });
 });
 
 // 跟随滚动
-let timer = null;
-window.onscroll = function () {
-  clearTimeout(timer);
-  timer = setTimeout(function () {
-    scroll_follow();
-  }, 300);
-};
+const followTimerInterval = 300;
+let headingHeight, UpIdx;
+let followTimer = null;
 
-function scroll_follow() {
-  let res = document.querySelectorAll('.my-toc a.active');
-  if (res.length != 1) { return; }
-  let active_heading = res.item(0);
+function computeHeadingHeight() {
+  const toc = document.querySelector('.my-toc');
+  return toc.scrollHeight / toc.querySelectorAll('a').length;
+}
 
-  let count = 0, current = 0;
-  document.querySelectorAll('.my-toc a').forEach((a) => {
-    if (a == active_heading) {
-      current = count;
-    }
-    ++count;
-  });
-  ++current;
-  count /= 2;
+function computeUpIdx() {
+  const fullToc = document.querySelector('.docs-toc');
+  const myToc = document.querySelector('.my-toc');
+  const offset = fullToc.scrollHeight - myToc.scrollHeight;
+  const max = parseInt((window.innerHeight - offset) / headingHeight);
+  return parseInt(max / 6);
+}
 
-  let fullToc = document.querySelector('.docs-toc');
-  let myToc = document.querySelector('.my-toc');
-
-  let single = myToc.scrollHeight / count;
-  let offset = fullToc.scrollHeight - myToc.scrollHeight;
-  let max = parseInt((window.innerHeight - offset) / single);
-  let mid = parseInt(max / 2);
-
-  let scrollLimit = 5;
-  if (scrollLimit > mid)
-    scrollLimit = mid;
-  let scrollAlready = 0;
-  if (current - scrollAlready > scrollLimit) {
-    scrollAlready = current - scrollLimit;
-    fullToc.scrollTop = single * scrollAlready;
-  } else {
-    fullToc.scrollTop = 0;
+function scrollFollow() {
+  const activeHeadings = document.querySelector('.my-toc').querySelectorAll('a.active');
+  if (activeHeadings.length > 0) {
+    const heading = activeHeadings.item(0);
+    const idx = heading.getAttribute('scrollIdx');
+    const scrollTarget = idx - upIdx;
+    document.querySelector('.docs-toc').scrollTop = headingHeight * scrollTarget;
   }
 }
 
-let frontEnd = 2000;
-let backEnd = -460;
-let picSize = 205;
-let step = 0.2;
-
-function translatePic(id, cur) {
-  let list = document.querySelectorAll(id);
-  let len = list.length;
+document.addEventListener('DOMContentLoaded', () => {
+  const myToc = document.querySelector('.my-toc');
+  const fullToc = document.querySelector('.docs-toc');
+  if (!myToc || !fullToc) return;
+  
   let i = 0;
-  for (; i < len; ++i) {
+  myToc.querySelectorAll('a').forEach(entry => {
+    entry.setAttribute('scrollIdx', i++);
+  });
+
+  headingHeight = computeHeadingHeight();
+  upIdx = computeUpIdx();
+
+  window.addEventListener('scroll', () => {
+    clearTimeout(followTimer);
+    followTimer = setTimeout(function () {
+      scrollFollow();
+    }, followTimerInterval);
+  });
+});
+
+// 图片水平循环滚动
+const picSize = 205;
+const frontEnd = 2000;
+const backEnd = -460;
+const step = 0.2;
+
+function translatePic(pics, cur) {
+  for (let i = 0; i < pics.length; ++i) {
     let thisCur = cur + i * picSize;
     
     if (thisCur > frontEnd)
@@ -117,16 +123,22 @@ function translatePic(id, cur) {
     else if (thisCur < backEnd)
       thisCur += frontEnd - backEnd;
 
-    let value = 'translateX(' + thisCur + 'px)';
-    list[i].style.setProperty('transform', value);
+    const value = 'translateX(' + thisCur + 'px)';
+    pics[i].style.setProperty('transform', value);
   }
 }
 
 let cur1 = 0;
 let cur2 = 0;
-let scrollTimer = window.setInterval(function () {
-  cur1 = (cur1 + step) % (frontEnd - backEnd); // 0 ~ (frontEnd - backEnd)
-  cur2 = (cur2 - step) % (frontEnd - backEnd); // (backEnd - frontEnd) ~ 0
-  translatePic('#scrollpic1 li', cur1);
-  translatePic('#scrollpic2 li', cur2);
-}, 5);
+document.addEventListener('DOMContentLoaded', () => {
+  const pics1 = document.querySelectorAll('#scrollpic1 li');
+  const pics2 = document.querySelectorAll('#scrollpic2 li');
+  if (!pics1.length || !pics2.length) return;
+
+  const scrollTimer = window.setInterval(function () {
+    cur1 = (cur1 + step) % (frontEnd - backEnd); // 0 ~ (frontEnd - backEnd)
+    cur2 = (cur2 - step) % (frontEnd - backEnd); // (backEnd - frontEnd) ~ 0
+    translatePic(pics1, cur1);
+    translatePic(pics2, cur2);
+  }, 5);
+});
