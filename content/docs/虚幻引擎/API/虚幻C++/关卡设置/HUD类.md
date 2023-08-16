@@ -1,7 +1,7 @@
 ---
 title: "HUD类"
 date: 2023-06-21T21:50:34
-lastmod: 2023-08-08T19:25:36+08:00
+lastmod: 2023-08-17T04:20:37+08:00
 draft: false
 weight: 1001
 ---
@@ -44,7 +44,7 @@ weight: 1001
 
 ## AHUD::Canvas {#ahud-canvas}
 
--   指针，可绘制HUD的画布（当前屏幕） <br/>
+-   指针，指向可绘制HUD的画布（当前屏幕） <br/>
 -   获取屏幕相关信息，或直接通过Canvas绘制图元 <br/>
 
 <img src="/pic/API/关卡设置/AHUD/Canvas.png" width="600" /> <br/> <br/>
