@@ -1,6 +1,6 @@
 // 高亮
-let headingFlag;
-let headingCnt;
+let HeadingFlag;
+let HeadingCnt;
 
 function addHeadingIdx(list) {
   let i = 0;
@@ -10,10 +10,10 @@ function addHeadingIdx(list) {
 }
 
 function refreshHighlight() {
-  headingCnt = 0;
-  for (let i = 0; i < headingFlag.length; ++i) {
-    if (headingFlag[i]) {
-      headingCnt++;
+  HeadingCnt = 0;
+  for (let i = 0; i < HeadingFlag.length; ++i) {
+    if (HeadingFlag[i]) {
+      ++HeadingCnt;
       document.querySelector(`.my-toc a[headingIdx="${i}"]`).classList.add('active');
     }
     else
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   addHeadingIdx(tocHeadings);
   addHeadingIdx(headings);
 
-  headingFlag = new Array(headings.length).fill(false);
-  headingCnt = 0;
+  HeadingFlag = new Array(headings.length).fill(false);
+  HeadingCnt = 0;
 
   const intersectionOptions = {
     threshold: 1.0
@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const headingObserver = new IntersectionObserver(headings => {
     headings.forEach(heading => {
-      // console.log('ratio', heading.target.getAttribute('id'), heading.intersectionRatio, heading.isIntersecting, headingCnt);
+      // console.log('ratio', heading.target.getAttribute('id'), heading.intersectionRatio, heading.isIntersecting, HeadingCnt);
       const idx = heading.target.getAttribute('headingIdx');
-      if ((headingFlag[idx] = heading.isIntersecting) || (headingCnt !== 1)) {
+      if ((HeadingFlag[idx] = heading.isIntersecting) || (HeadingCnt !== 1)) {
         refreshHighlight();
       }
     });
@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 跟随滚动
-const followTimerInterval = 300;
-let headingHeight, upIdx;
-let followTimer = null;
+let HeadingHeight, UpIdx;
+let FollowTimer = null;
+const FollowTimerInterval = 300;
 
 function computeHeadingHeight() {
   const toc = document.querySelector('.my-toc');
@@ -73,7 +73,7 @@ function computeUpIdx() {
   const fullToc = document.querySelector('.docs-toc');
   const myToc = document.querySelector('.my-toc');
   const offset = fullToc.scrollHeight - myToc.scrollHeight;
-  const max = parseInt((window.innerHeight - offset) / headingHeight);
+  const max = parseInt((window.innerHeight - offset) / HeadingHeight);
   return parseInt(max / 6);
 }
 
@@ -82,8 +82,8 @@ function scrollFollow() {
   if (activeHeadings.length > 0) {
     const heading = activeHeadings.item(0);
     const idx = heading.getAttribute('scrollIdx');
-    const scrollTarget = idx - upIdx;
-    document.querySelector('.docs-toc').scrollTop = headingHeight * scrollTarget;
+    const scrollTarget = idx - UpIdx;
+    document.querySelector('.docs-toc').scrollTop = HeadingHeight * scrollTarget;
   }
 }
 
@@ -97,48 +97,49 @@ document.addEventListener('DOMContentLoaded', () => {
     entry.setAttribute('scrollIdx', i++);
   });
 
-  headingHeight = computeHeadingHeight();
-  upIdx = computeUpIdx();
+  HeadingHeight = computeHeadingHeight();
+  UpIdx = computeUpIdx();
 
-  window.addEventListener('scroll', () => {
-    clearTimeout(followTimer);
-    followTimer = setTimeout(function () {
+  window.onscroll = function () {
+    clearTimeout(FollowTimer);
+    FollowTimer = setTimeout(function () {
       scrollFollow();
-    }, followTimerInterval);
-  });
+    }, FollowTimerInterval);
+  }
 });
 
 // 图片水平循环滚动
-const picSize = 205;
-const frontEnd = 2000;
-const backEnd = -460;
-const step = 0.2;
+const PicWidth = 205;
+const FrontEnd = 2000;
+const BackEnd = -460;
+const Step = 0.2;
+const ScrollTimerInterval = 5;
 
 function translatePic(pics, cur) {
   for (let i = 0; i < pics.length; ++i) {
-    let thisCur = cur + i * picSize;
+    let thisCur = cur + i * PicWidth;
     
-    if (thisCur > frontEnd)
-      thisCur -= frontEnd - backEnd;
-    else if (thisCur < backEnd)
-      thisCur += frontEnd - backEnd;
+    if (thisCur > FrontEnd)
+      thisCur -= FrontEnd - BackEnd;
+    else if (thisCur < BackEnd)
+      thisCur += FrontEnd - BackEnd;
 
     const value = 'translateX(' + thisCur + 'px)';
     pics[i].style.setProperty('transform', value);
   }
 }
 
-let cur1 = 0;
-let cur2 = 0;
+let Cur1 = 0;
+let Cur2 = 0;
 document.addEventListener('DOMContentLoaded', () => {
   const pics1 = document.querySelectorAll('#scrollpic1 li');
   const pics2 = document.querySelectorAll('#scrollpic2 li');
   if (!pics1.length || !pics2.length) return;
 
   const scrollTimer = window.setInterval(function () {
-    cur1 = (cur1 + step) % (frontEnd - backEnd); // 0 ~ (frontEnd - backEnd)
-    cur2 = (cur2 - step) % (frontEnd - backEnd); // (backEnd - frontEnd) ~ 0
-    translatePic(pics1, cur1);
-    translatePic(pics2, cur2);
-  }, 5);
+    Cur1 = (Cur1 + Step) % (FrontEnd - BackEnd); // 0 ~ (FrontEnd - BackEnd)
+    Cur2 = (Cur2 - Step) % (FrontEnd - BackEnd); // (BackEnd - FrontEnd) ~ 0
+    translatePic(pics1, Cur1);
+    translatePic(pics2, Cur2);
+  }, ScrollTimerInterval);
 });

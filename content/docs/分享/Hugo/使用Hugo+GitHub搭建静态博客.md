@@ -1,7 +1,7 @@
 ---
 title: "使用Hugo+GitHub搭建静态博客"
 date: 2023-06-08T10:57:46
-lastmod: 2023-08-14T15:11:10+08:00
+lastmod: 2023-08-16T13:07:23+08:00
 draft: false
 weight: 1001
 ---
