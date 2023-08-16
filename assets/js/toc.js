@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     FollowTimer = setTimeout(function () {
       scrollFollow();
     }, FollowTimerInterval);
-  }
+  };
 });
 
 // 图片水平循环滚动
