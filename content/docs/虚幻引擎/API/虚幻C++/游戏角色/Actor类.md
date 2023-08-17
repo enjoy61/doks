@@ -1,7 +1,7 @@
 ---
 title: "Actor类"
 date: 2023-08-17T02:32:13
-lastmod: 2023-08-17T02:34:14+08:00
+lastmod: 2023-08-17T04:39:47+08:00
 draft: false
 weight: 1001
 ---
@@ -33,7 +33,7 @@ void AttachToComponent(USceneComponent* Parent, const FAttachmentTransformRules&
 
 | -               |           |
 |-----------------|-----------|
-| Parent          | 目标: 可变换组件 |
+| Parent          | 目标, 可变换组件 |
 | AttachmentRules | 挂载规则  |
 | SocketName      | 挂载点名字 |
 

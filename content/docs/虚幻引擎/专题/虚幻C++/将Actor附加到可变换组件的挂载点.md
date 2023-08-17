@@ -1,12 +1,12 @@
 ---
 title: "将Actor附加到可变换组件的挂载点"
 date: 2023-06-21T21:56:47
-lastmod: 2023-08-17T02:47:13+08:00
+lastmod: 2023-08-17T04:43:29+08:00
 draft: false
 weight: 1001
 ---
 
-## 概览 {#概览}
+## 说明 {#说明}
 
 通过AActor::AttachToComponent将Actor附加到可变换组件的挂载点上, 要求已在组件上添加挂载点, 并提供以下信息 <br/>
 
@@ -23,7 +23,7 @@ weight: 1001
 [AActor::AttachToComponent](/docs/虚幻引擎/api/虚幻c++/游戏角色/actor类/#aactor-attachtocomponent) <br/>
 
 
-## 可变换组件 USceneComponent {#可变换组件-uscenecomponent}
+## 可变换组件: USceneComponent及其派生类 {#可变换组件-uscenecomponent及其派生类}
 
 |                        | 基类                |
 |------------------------|-------------------|
@@ -59,12 +59,12 @@ weight: 1001
 -  bInWeldSimulatedBodies
 
     `Whether to weld simulated bodies together when attaching` <br/>
-    不知道效果, 当前使用false <br/>
+    不知道效果, 设为false <br/>
 
 
 #### 构造函数 {#构造函数}
 
-1.  对变换属性的分量使用相同规则 <br/>
+1.  对变换属性的分量应用相同规则 <br/>
     ```cpp
     FAttachmentTransformRules(EAttachmentRule InRule, bool bInWeldSimulatedBodies)
         : LocationRule(InRule)
@@ -73,7 +73,7 @@ weight: 1001
         , bWeldSimulatedBodies(bInWeldSimulatedBodies)
     {}
     ```
-2.  分别设置变换属性分量 <br/>
+2.  为变换属性定制规则 <br/>
     ```cpp
     FAttachmentTransformRules(EAttachmentRule InLocationRule, EAttachmentRule InRotationRule, EAttachmentRule InScaleRule, bool bInWeldSimulatedBodies)
         : LocationRule(InLocationRule)
