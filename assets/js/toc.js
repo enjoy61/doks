@@ -102,9 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.onscroll = function () {
     clearTimeout(FollowTimer);
-    FollowTimer = setTimeout(function () {
-      scrollFollow();
-    }, FollowTimerInterval);
+    FollowTimer = setTimeout(scrollFollow, FollowTimerInterval);
   };
 });
 
