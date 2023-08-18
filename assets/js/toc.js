@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!toc) return;
 
   const tocHeadings = toc.querySelectorAll('a');
-  const headings = Array.apply(null, document.querySelectorAll('h2[id], h3[id]')).filter(function (value, index, arr) {
+  const headings = Array.apply(null, document.querySelectorAll('h2[id], h3[id], h4[id]')).filter(function (value, index, arr) {
     return arr[index].querySelector('.anchor');
   });
 
