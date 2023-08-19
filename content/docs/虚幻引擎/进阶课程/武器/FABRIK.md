@@ -1,14 +1,16 @@
 ---
 title: "FABRIK"
 date: 2023-08-18T19:46:42
-lastmod: 2023-08-19T14:13:48+08:00
+lastmod: 2023-08-19T16:13:59+08:00
 draft: false
 weight: 1010
 ---
 
 ## 概览 {#概览}
 
-为游戏角色枪管所在arm bone设置反转运动学 `Inverse Kinematics` <br/>
+-   [X] 问题描述 <br/>
+-   [X] FABRIK <br/>
+-   [X] 在动画蓝图中使用FABRIK <br/>
 
 
 ## 问题描述 {#问题描述}
@@ -29,7 +31,7 @@ weight: 1010
     -   之前 <br/>
         
         <img src="/pic/武器/FABRIK/CameraBefore.png" width="900" /> <br/> <br/>
-    -   `Camera > Details > Transform > Rotation > Z = 180` <br/>
+    -   `Camera > Details > Transform > Rotation > Yaw = 180` <br/>
         
         <img src="/pic/武器/FABRIK/Camera.png" width="900" /> <br/> <br/>
 3.  效果图 <br/>
