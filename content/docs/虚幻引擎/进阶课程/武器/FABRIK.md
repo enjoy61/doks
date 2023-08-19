@@ -1,7 +1,7 @@
 ---
 title: "FABRIK"
 date: 2023-08-18T19:46:42
-lastmod: 2023-08-19T16:13:59+08:00
+lastmod: 2023-08-19T16:48:14+08:00
 draft: false
 weight: 1010
 ---
@@ -53,7 +53,7 @@ weight: 1010
 ## 在动画蓝图添加FABRIK {#在动画蓝图添加fabrik}
 
 `ABP_BaseCharacter > AnimGraph` <br/>
-在动画蓝图添加FABRIK, 取消末端执行器变换信息的针脚 <br/>
+在动画蓝图添加FABRIK, 切换末端执行器变换在细节面板设置 <br/>
 
 
 ### 确定骨骼链 {#确定骨骼链}
@@ -90,12 +90,11 @@ weight: 1010
 
 ### 将FABRIK加入到输出 {#将fabrik加入到输出}
 
-1.  将AO_BaseCharacter作为FABRIK的输入 <br/>
-    `Component Pose` <br/>
+1.  将AO_BaseCharacter作为FABRIK的输入 `Component Pose` <br/>
     自动添加转换座标系的节点 `LocalToComponent` <br/>
 2.  将输出作为Slot的输入 <br/>
     -   自动添加转换座标系的节点 `ComponentToLocal` <br/>
-    -   播放死亡动画时, 左手不再扶在枪管上 <br/>
+    -   播放死亡动画时, 左手不需要扶在枪管上 <br/>
 
 <img src="/pic/武器/FABRIK/加入.png" width="1000" /> <br/> <br/>
 
