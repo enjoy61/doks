@@ -1,14 +1,17 @@
 ---
 title: "elisp"
 date: 2023-08-12T23:48:25
-lastmod: 2023-08-14T13:17:22+08:00
+lastmod: 2023-08-21T14:18:08+08:00
 draft: false
-weight: 1003
+weight: 2003
 ---
 
 ## 便签 {#便签}
 
-[Manual](https://www.gnu.org/software/emacs/manual/html_mono/elisp.html) <br/>
+| -                                                                            |
+|------------------------------------------------------------------------------|
+| [Manual](https://www.gnu.org/software/emacs/manual/html_mono/elisp.html)     |
+| [李杀-Buffer](http://xahlee.info/emacs/emacs/elisp_buffer_file_functions.html) |
 
 
 ## 文件 {#文件}
@@ -76,10 +79,10 @@ replace-string会跳过链接匹配 <br/>
 #### search-backward {#search-backward}
 
 ```elisp
-(search-backward "=")
+(search-backward "test")
 
 ;; 查找成功返回t
-(search-backward "[[ue:" nil t)
+(search-backward "test" nil t)
 ```
 
 
@@ -90,14 +93,14 @@ replace-string会跳过链接匹配 <br/>
 
 -   目的字符串 <br/>
     ```text
-    [[ue:UE_5.1/Engine/Source/Runtime/Core/Public/Math/Interval.h=
+    ![[ue:UE_5.1/Engine/Source/Runtime/Core/Public/Math/Interval.h][虚幻引擎:Interval.h]]
     ```
 -   正则匹配 <br/>
     ```elisp
-    (re-search-forward (rx "[[ue:" (group (0+ (not "]"))) "][虚幻引擎:" (group (0+ (not "]"))) "]]" ))
+    (re-search-forward (rx "[[" "ue:" (group (0+ (not "]"))) "][虚幻引擎:" (group (0+ (not "]"))) "]]" ))
     
     ;; 匹配返回t
-    (re-search-forward (rx "[[ue:" (group (0+ (not "]"))) "][虚幻引擎:" (group (0+ (not "]"))) "]]" ) nil t)
+    (re-search-forward (rx "[[" "ue:" (group (0+ (not "]"))) "][虚幻引擎:" (group (0+ (not "]"))) "]]" ) nil t)
     ```
 
 
@@ -157,7 +160,30 @@ replace-string会跳过链接匹配 <br/>
 ```
 
 
-### 在临时buffer中做处理 {#在临时buffer中做处理}
+### 创建buffer {#创建buffer}
+
+```elisp
+(generate-new-buffer "test")
+```
+
+
+### 返回已有buffer或创建新buffer {#返回已有buffer或创建新buffer}
+
+```elisp
+(get-buffer-create "test")
+```
+
+
+### 在指定buffer中处理 {#在指定buffer中处理}
+
+```elisp
+(with-current-buffer (get-buffer-create "test")
+  (insert "hello")
+  )
+```
+
+
+### 在临时buffer中处理 {#在临时buffer中处理}
 
 ```elisp
 (with-temp-buffer
@@ -183,6 +209,13 @@ replace-string会跳过链接匹配 <br/>
 
 ```elisp
 (buffer-name)
+```
+
+
+### 获取buffer对应文件的完整路径 {#获取buffer对应文件的完整路径}
+
+```elisp
+(buffer-file-name)       
 ```
 
 
@@ -261,6 +294,13 @@ replace-string会跳过链接匹配 <br/>
 
 ```elisp
 (sleep-for 2)
+```
+
+
+### 执行shell命令 {#执行shell命令}
+
+```elisp
+(shell-command "ps")
 ```
 
 

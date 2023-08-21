@@ -1,7 +1,7 @@
 ---
 title: "使用ox-hugo导出博客"
 date: 2023-08-12T16:36:21
-lastmod: 2023-08-21T13:30:12+08:00
+lastmod: 2023-08-21T14:17:06+08:00
 draft: false
 weight: 2005
 ---
@@ -322,7 +322,7 @@ weight: 2005
 (defun my/compute-weight ()
   (interactive)
   (let ((cur-pos)
-        (weight 1001))
+        (weight 2001))
     (save-excursion
       (outline-next-heading)
       (when (re-search-backward (rx ":" "EXPORT_FILE_NAME" ": " (group (0+ (not "\n"))) "\n") nil t)

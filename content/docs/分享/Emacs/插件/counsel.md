@@ -1,7 +1,7 @@
 ---
 title: "counsel"
 date: 2023-08-21T09:56:12
-lastmod: 2023-08-21T13:30:19+08:00
+lastmod: 2023-08-21T13:41:52+08:00
 draft: false
 weight: 2007
 ---
@@ -19,13 +19,13 @@ weight: 2007
 
 ### 便签 {#便签}
 
-[GitHub](https://github.com/ggreer/the_silver_searcher)    <br/>
+[GitHub](https://github.com/ggreer/the_silver_searcher) <br/>
 
 
 ### 安装 {#安装}
 
 ```bash
-brew install the_silver_searcher
+# brew install the_silver_searcher
 ```
 
 

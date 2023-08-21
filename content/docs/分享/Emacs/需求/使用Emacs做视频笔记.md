@@ -1,7 +1,7 @@
 ---
 title: "使用Emacs做视频笔记"
 date: 2023-08-12T16:27:08
-lastmod: 2023-08-21T13:30:11+08:00
+lastmod: 2023-08-21T14:17:05+08:00
 draft: false
 weight: 2004
 ---
@@ -105,7 +105,7 @@ weight: 2004
 
 (defun my/seek-to-timestamp ()
   (interactive)
-  (when (search-backward "[[timestamp:" nil t)
+  (when (search-backward (concat "[[" "timestamp:") nil t)
     (when (re-search-forward (rx "[[" "timestamp:" (group (0+ (not "#"))) "#" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]" ) nil t)
       (let ((file (string-join (mapcar #'string (match-string 1)))))
         (setq my/emms-timestamp (string-join (mapcar #'string (match-string 2))))
