@@ -1,7 +1,7 @@
 ---
 title: "使用ox-hugo导出博客"
 date: 2023-08-12T16:36:21
-lastmod: 2023-08-12T21:35:33+08:00
+lastmod: 2023-08-21T13:30:12+08:00
 draft: false
 weight: 2005
 ---
@@ -23,17 +23,9 @@ weight: 2005
 | 源码链接 | 不需要跳转, 需提供说明      | 在文本块中显示相对路径      |
 
 
-## ox-hugo-安装 {#ox-hugo-安装}
+## 安装ox-hugo {#安装ox-hugo}
 
-```elisp
-(use-package ox-hugo
-  :ensure t   ;Auto-install the package from Melpa
-  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
-  :after ox
-  :config
-  ;; 不处理图片
-  (setq org-hugo-external-file-extensions-allowed-for-copying nil))
-```
+[ox-hugo-安装](/docs/分享/emacs/插件/ox-hugo/#ox-hugo-安装) <br/>
 
 
 ## 子树路径 {#子树路径}
@@ -42,7 +34,7 @@ weight: 2005
 ### 获取导出文件路径 {#获取导出文件路径}
 
 -   保存到列表 <br/>
--   只能有全局SECTION, 子树使用SECTION_FRAG <br/>
+-   只能有选项SECTION, 子树使用SECTION_FRAG <br/>
 -   缺乏子树从属判断 <br/>
 
 <!--listend-->
@@ -56,13 +48,14 @@ weight: 2005
         (slotlist '())
         (cur-level)
         (frag)
-        (new-level))
+        (new-level)
+        )
     (save-excursion
       (beginning-of-buffer)
-      (when (re-search-forward (rx "#+HUGO_BASE_DIR: " (group (0+ (not "\n"))) "\n") nil t)
+      (when (re-search-forward (rx "#+" "HUGO_BASE_DIR" ": " (group (0+ (not "\n"))) "\n") nil t)
         (setq base-dir (string-join (mapcar #'string (match-string 1))))
         (beginning-of-buffer)
-        (when (re-search-forward (rx "#+HUGO_SECTION: " (group (0+ (not "\n"))) "\n") nil t)
+        (when (re-search-forward (rx "#+" "HUGO_SECTION" ": " (group (0+ (not "\n"))) "\n") nil t)
           (setq section (string-join (mapcar #'string (match-string 1))))
           (setq dir (concat base-dir "/content/" section))
           )
@@ -71,7 +64,7 @@ weight: 2005
     (add-to-list 'slotlist export-name)
     (save-excursion
       (setq cur-level (funcall outline-level))
-      (while (re-search-backward (rx ":EXPORT_HUGO_SECTION_FRAG: " (group (0+ (not "\n"))) "\n" ) nil t)
+      (while (re-search-backward (rx ":" "EXPORT_HUGO_SECTION_FRAG" ": " (group (0+ (not "\n"))) "\n" ) nil t)
               (setq frag (string-join (mapcar #'string (match-string 1))))
               (setq new-level (funcall outline-level))
               (when (< new-level cur-level)
@@ -143,7 +136,7 @@ weight: 2005
 (defun my/amend-pic-link-for-all ()
   (interactive)
   (beginning-of-buffer)
-  (while (re-search-forward (rx ":EXPORT_FILE_NAME: " (group (0+ (not "\n"))) "\n") nil t)
+  (while (re-search-forward (rx ":" "EXPORT_FILE_NAME" ": " (group (0+ (not "\n"))) "\n") nil t)
     (my/amend-pic-link (string-join (mapcar #'string (match-string 1))))
     )
   )
@@ -169,7 +162,7 @@ weight: 2005
   (interactive)
   (save-excursion
     (beginning-of-buffer)
-    (while (re-search-forward (rx "[[id:" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]") nil t)
+    (while (re-search-forward (rx "[[" "id:" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]") nil t)
       (let* ((id (string-join (mapcar #'string (match-string 1))))
              (title (string-join (mapcar #'string (match-string 2))))
              (title-downcase (string-replace "::" "-" (downcase title)))
@@ -178,14 +171,14 @@ weight: 2005
         (with-current-buffer (find-file-noselect (org-roam-node-file node))
           (goto-char (org-roam-node-point node))
           (outline-next-heading)
-          (when (re-search-backward (rx ":EXPORT_FILE_NAME: " (group (0+ (not "\n"))) "\n") nil t)
+          (when (re-search-backward (rx ":" "EXPORT_FILE_NAME" ": " (group (0+ (not "\n"))) "\n") nil t)
             (setq slot (my/subtree-path-str (string-join (mapcar #'string (match-string 1)))))
             )
           )
         (when slot
           (save-excursion
             (beginning-of-buffer)
-            (when (search-forward (format "[[id:%s][%s]]" id title) nil t)
+            (when (search-forward (format (concat "[[" "id:%s][%s]]") id title) nil t)
               ;;(message (format "%s %s" slot title))
               ;;(sleep-for 1)
               (replace-match (format "[[file:/%s/#%s][%s]]"
@@ -212,7 +205,7 @@ weight: 2005
   (interactive)
   (save-excursion
     (beginning-of-buffer)
-    (while (re-search-forward (rx "[[timestamp:" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]") nil t)
+    (while (re-search-forward (rx (not "!") "[[" "timestamp:" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]") nil t)
       (replace-match "" nil t)
       )
     )
@@ -230,7 +223,7 @@ weight: 2005
   (interactive)
   (save-excursion
     (beginning-of-buffer)
-    (while (re-search-forward (rx "[[uep:" (group (0+ (not "]"))) "][" (group (0+ (not ":"))) ":" (group (0+ (not "]"))) "]]" ) nil t)
+    (while (re-search-forward (rx (not "!") "[[" "uep:" (group (0+ (not "]"))) "][" (group (0+ (not ":"))) ":" (group (0+ (not "]"))) "]]" ) nil t)
       (let ((proj (string-join (mapcar #'string (match-string 2))))
             (file (string-join (mapcar #'string (match-string 3)))))
         (replace-match (format "=%s: %s=" proj file) nil t)
@@ -248,7 +241,7 @@ weight: 2005
   (interactive)
   (save-excursion
     (beginning-of-buffer)
-    (while (re-search-forward (rx "[[ue:" (group (0+ (not "]"))) "][虚幻引擎:" (group (0+ (not "]"))) "]]" ) nil t)
+    (while (re-search-forward (rx (not "!") "[[" "ue:" (group (0+ (not "]"))) "][虚幻引擎:" (group (0+ (not "]"))) "]]" ) nil t)
       (let ((file (string-join (mapcar #'string (match-string 1)))))
         (replace-match (format "=%s=" file) nil t)
         )
@@ -275,7 +268,7 @@ weight: 2005
 ;;           (setq folder ""))
 ;;       (if (string-prefix-p "STUGameModeBase" filename)
 ;;           (setq folder ""))
-;;       (replace-match (format "[[uep:%s%s][ShootThemUp:%s]]" folder filename filename) nil t)
+;;       (replace-match (format (concat "[[" "uep:%s%s][ShootThemUp:%s]]") folder filename filename) nil t)
 ;;       )
 ;;     )
 ;;   )
@@ -308,7 +301,7 @@ weight: 2005
   (interactive)
   (save-excursion
     (outline-next-heading)
-    (when (re-search-backward (rx ":EXPORT_FILE_NAME: " (group (0+ (not "\n"))) "\n") nil t)
+    (when (re-search-backward (rx ":" "EXPORT_FILE_NAME" ": " (group (0+ (not "\n"))) "\n") nil t)
       (outline-previous-heading)
       (org-copy-subtree)
       (current-kill 0)
@@ -332,7 +325,7 @@ weight: 2005
         (weight 1001))
     (save-excursion
       (outline-next-heading)
-      (when (re-search-backward (rx ":EXPORT_FILE_NAME: " (group (0+ (not "\n"))) "\n") nil t)
+      (when (re-search-backward (rx ":" "EXPORT_FILE_NAME" ": " (group (0+ (not "\n"))) "\n") nil t)
         (org-previous-visible-heading 1)
         (setq cur-pos (point))
         (while (/= cur-pos (my/backward-heading-same-level))
@@ -357,7 +350,7 @@ weight: 2005
   (interactive)
   (save-excursion
     (outline-next-heading)
-    (when (re-search-backward (rx ":EXPORT_FILE_NAME: " (group (0+ (not "\n"))) "\n") nil t)
+    (when (re-search-backward (rx ":" "EXPORT_FILE_NAME" ": " (group (0+ (not "\n"))) "\n") nil t)
       (let* ((export-name (string-join (mapcar #'string (match-string 1))))
              (subtree (my/copy-org-subtree))
              (options (my/copy-org-options))
@@ -383,13 +376,13 @@ weight: 2005
             (setq slot (concat slot "/" item))
             )
           (beginning-of-buffer)
-          (when (re-search-forward (rx "+HUGO_SECTION: " (group (0+ (not "\n")))) nil t)
+          (when (re-search-forward (rx "+" "HUGO_SECTION" ": " (group (0+ (not "\n")))) nil t)
             (setq section (string-join (mapcar #'string (match-string 1))))
-            (replace-match (format "+HUGO_SECTION: %s" (concat section slot)))
+            (replace-match (format (concat "+" "HUGO_SECTION" ": %s") (concat section slot)))
             )
           (beginning-of-buffer)
-          (when (re-search-forward (rx "EXPORT_HUGO_WEIGHT: " (group (0+ (not "\n")))) nil t)
-            (replace-match (format "EXPORT_HUGO_WEIGHT: %s" weight))
+          (when (re-search-forward (rx "EXPORT_HUGO_WEIGHT" ": " (group (0+ (not "\n")))) nil t)
+            (replace-match (format (concat "EXPORT_HUGO_WEIGHT" ": %s") weight))
             )
           (beginning-of-buffer)
           (outline-next-heading)

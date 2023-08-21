@@ -1,7 +1,7 @@
 ---
 title: "使用Emacs做视频笔记"
 date: 2023-08-12T16:27:08
-lastmod: 2023-08-12T21:35:33+08:00
+lastmod: 2023-08-21T13:30:11+08:00
 draft: false
 weight: 2004
 ---
@@ -30,8 +30,10 @@ weight: 2004
 
 ## 时间戳样式 {#时间戳样式}
 
+**无!** <br/>
+
 ```text
-[[timestamp:file.mp4#00:29][name]]
+![[timestamp:file.mp4#00:29][name]]
 ```
 
 
@@ -49,43 +51,14 @@ weight: 2004
 ```
 
 
-## emms-安装 {#emms-安装}
+## 安装emms {#安装emms}
 
-```elisp
-(use-package emms
-  :ensure t
-  :init
-  (emms-all)
-  :config
-  (setq emms-player-list '(emms-player-mpv)
-        emms-info-function '(emms-info-native)
-        emms-source-file-default-directory my/movie-path
-        emms-seek-seconds 5)
-  :bind (("C-c e SPC" . emms-pause)
-         ("C-c e f" . emms-seek-forward)
-         ("C-c e b" . emms-seek-backward)
-         ("C-c e p" . emms-previous)
-         ("C-c e n" . emms-next)
-         ("C-c e x" . emms-stop)
-         ("C-c e e" . emms)))
-```
+[emms-安装](/docs/分享/emacs/插件/emms/#emms-安装) <br/>
 
 
-## pretty-hydra-安装 {#pretty-hydra-安装}
+## 安装pretty-hydra {#安装pretty-hydra}
 
-```elisp
-(use-package pretty-hydra
-  :ensure t
-  :init
-  (pretty-hydra-define emms-video-hydra (:title "Emms-hydra" :quit-key "q" :color blue)
-    ("Control" (("SPC" emms-pause "Pause")
-                ("f" emms-seek-forward "Fast Forward")
-                ("b" emms-seek-backward "Rewind")
-                ("p" emms-previous "Previous")
-                ("n" emms-next "Next")
-                ("x" emms-stop "Stop"))))
-  :bind("C-c e m" . emms-video-hydra/body))
-```
+[pretty-hydra-安装](/docs/分享/emacs/插件/prettry-hydra/#pretty-hydra-安装) <br/>
 
 
 ## 插入时间戳 {#插入时间戳}
@@ -110,7 +83,7 @@ weight: 2004
                                   )
     (sleep-for 0.1)
     (when (and my/mpv-timestamp my/mpv-current-file)
-      (insert (format "[[timestamp:%s#%d][时间戳:%s]]" my/mpv-current-file my/mpv-timestamp desc))
+      (insert (format (concat "[[" "timestamp:%s#%d][时间戳:%s]]") my/mpv-current-file my/mpv-timestamp desc))
       (message "Add timestamp %s#%d success!" my/mpv-current-file my/mpv-timestamp)
       )
     (unless (and my/mpv-timestamp my/mpv-current-file)
@@ -133,7 +106,7 @@ weight: 2004
 (defun my/seek-to-timestamp ()
   (interactive)
   (when (search-backward "[[timestamp:" nil t)
-    (when (re-search-forward (rx "[[timestamp:" (group (0+ (not "#"))) "#" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]" ) nil t)
+    (when (re-search-forward (rx "[[" "timestamp:" (group (0+ (not "#"))) "#" (group (0+ (not "]"))) "][" (group (0+ (not "]"))) "]]" ) nil t)
       (let ((file (string-join (mapcar #'string (match-string 1)))))
         (setq my/emms-timestamp (string-join (mapcar #'string (match-string 2))))
         (if emms-player-playing-p (emms-stop))
