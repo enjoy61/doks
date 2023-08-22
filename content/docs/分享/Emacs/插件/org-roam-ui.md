@@ -1,7 +1,7 @@
 ---
 title: "org-roam-ui"
 date: 2023-08-21T10:04:08
-lastmod: 2023-08-21T13:30:20+08:00
+lastmod: 2023-08-21T15:36:41+08:00
 draft: false
 weight: 2011
 ---
@@ -23,7 +23,7 @@ weight: 2011
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use
-  :hook (after-init . org-roam-ui-mode)
+  ;; :hook (after-init . org-roam-ui-mode)
   :config
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
