@@ -1,7 +1,7 @@
 ---
 title: "Windows上使用Sublime进行Unreal开发"
 date: 2023-08-25T12:27:04
-lastmod: 2023-08-25T12:39:02+08:00
+lastmod: 2023-08-25T18:48:01+08:00
 draft: false
 weight: 2002
 ---
@@ -19,6 +19,14 @@ weight: 2002
 | [Sublime](https://www.sublimetext.com/) |       |
 
 [虚幻引擎5.1版本说明](https://docs.unrealengine.com/5.1/zh-CN/unreal-engine-5.1-release-notes/): 依赖.NET 6.0 <br/>
+
+
+## 概览 {#概览}
+
+-   [X] 从零创建Unreal项目 <br/>
+-   [X] 在命令行编译和运行项目, 封装在脚本中 <br/>
+-   [X] 创建Actor派生类 <br/>
+-   [X] 查看引擎代码 <br/>
 
 
 ## Cmder {#cmder}
@@ -285,9 +293,10 @@ public class DirkCore : ModuleRules
 
 ### 编译虚幻编辑器使用的动态库 {#编译虚幻编辑器使用的动态库}
 
-| Windows                                     |    |
-|---------------------------------------------|----|
-| Epic Games\UE_5.1\Engine\Build\BatchFiles\\ | 脚本 |
+|         | 脚本路径                                               |
+|---------|----------------------------------------------------|
+| Windows | Epic Games\UE_5.1\Engine\Build\BatchFiles\Build.bat    |
+| macOS   | Epic Games\UE_5.1\Engine\Build\BatchFiles\Mac\Build.sh |
 
 -   Build脚本包括UnrealBuildTool的调用, 和一些参数配置 <br/>
 -   运行Build脚本, 指定Target、Platform和Build Configuration, 给出uproject文件路径 <br/>

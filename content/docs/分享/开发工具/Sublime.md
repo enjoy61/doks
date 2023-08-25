@@ -1,10 +1,15 @@
 ---
 title: "Sublime"
 date: 2023-06-10T22:05:01
-lastmod: 2023-08-25T12:29:02+08:00
+lastmod: 2023-08-25T21:32:32+08:00
 draft: false
 weight: 2002
 ---
+
+## 便签 {#便签}
+
+[Sublime配色方案](https://colorsublime.github.io/) <br/>
+
 
 ## 打开命令行 {#打开命令行}
 
@@ -139,8 +144,10 @@ Command-Shift-F <br/>
 
 ### 头文件和源文件之间切换 {#头文件和源文件之间切换}
 
-| -       |           |
-|---------|-----------|
-| Windows | Alt-O     |
-| macOS   | Options-O |
+`Switch File Deluxe` <br/>
+
+| -       |                    |
+|---------|--------------------|
+| Windows | Alt-O              |
+| macOS   | Options-Command-UP |
 
