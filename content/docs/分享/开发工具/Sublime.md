@@ -1,7 +1,7 @@
 ---
 title: "Sublime"
 date: 2023-06-10T22:05:01
-lastmod: 2023-08-22T23:22:46+08:00
+lastmod: 2023-08-25T12:29:02+08:00
 draft: false
 weight: 2002
 ---
@@ -10,7 +10,7 @@ weight: 2002
 
 | -       |                 |
 |---------|-----------------|
-| Windows | Control-P       |
+| Windows | Control-Shift-P |
 | macOS   | Command-Shift-P |
 
 
@@ -43,10 +43,10 @@ weight: 2002
 2.  输入Package Controll: Install Package <br/>
 3.  输入插件名 <br/>
     
-    | -                  |
-    |--------------------|
-    | Project Manager    |
-    | Switch File Deluxe |
+    | -                  |             |
+    |--------------------|-------------|
+    | Project Manager    | 创建项目    |
+    | Switch File Deluxe | 头文件和源文件之间切换 |
 
 
 ### 查看已安装插件 {#查看已安装插件}
@@ -117,6 +117,11 @@ Option-Command-Shift-N；2-3 <br/>
 命令行 &gt; Project: Add Folder <br/>
 
 
+### 查看定义 {#查看定义}
+
+F12 <br/>
+
+
 ### 打开项目内文件 {#打开项目内文件}
 
 Command-P &gt; 文件名 <br/>
@@ -130,4 +135,12 @@ Command-F <br/>
 ### 项目内查找 {#项目内查找}
 
 Command-Shift-F <br/>
+
+
+### 头文件和源文件之间切换 {#头文件和源文件之间切换}
+
+| -       |           |
+|---------|-----------|
+| Windows | Alt-O     |
+| macOS   | Options-O |
 
