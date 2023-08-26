@@ -1,7 +1,7 @@
 ---
 title: "Windows上使用Sublime进行Unreal开发"
 date: 2023-08-25T12:27:04
-lastmod: 2023-08-25T18:48:01+08:00
+lastmod: 2023-08-26T16:47:23+08:00
 draft: false
 weight: 2002
 ---
@@ -34,7 +34,7 @@ weight: 2002
 1.  显示/隐藏窗口: C-\` <br/>
 2.  在文件资源管理器打开Cmder当前路径 <br/>
     ```bash
-    cd /d C:\Projects
+    cd /d C:\Dirk
     explorer .
     ```
 
@@ -43,11 +43,11 @@ weight: 2002
 
 使用以下插件 <br/>
 
-| -                  |                                                  |
-|--------------------|--------------------------------------------------|
-| Project Manager    |                                                  |
-| Switch File Deluxe | 在源文件和头文件之间切换; Windows `Alt-O` ; macOS `Option-O` |
-| Unreal Snippets    | UP主提供                                         |
+| -                  |                                                           |
+|--------------------|-----------------------------------------------------------|
+| Project Manager    |                                                           |
+| Switch File Deluxe | 在源文件和头文件之间切换; Windows `Alt-O` ; macOS `Option-Command-UP` |
+| Unreal Snippets    | UP主提供                                                  |
 
 
 ## 从零创建Unreal项目 {#从零创建unreal项目}
@@ -73,7 +73,7 @@ weight: 2002
 包含项目对应的引擎版本, 以及打开该项目所需的动态库 <br/>
 
 1.  插入代码段: uuproj &gt; TAB <br/>
-2.  修改 `Modules Name` <br/>
+2.  修改 `Modules > Name` <br/>
     ```json
     {
         "FileVersion": 3,
@@ -191,7 +191,7 @@ public class DirkCore : ModuleRules
 
 -  虚幻引擎由各个模块组成
 
-    -   查看 `C:\Epic Games\UE_5.1\Engine\Source` ，组织方式为模块类型 <br/>
+    -   查看 `Epic Games\UE_5.1\Engine\Source` ，组织方式为模块类型 <br/>
     -   Runtime模块：引擎代码，不包含虚幻编辑器和开发工具; 包含各种运行时模块, 如Core、CoreUObject和Engine <br/>
         如果想要开发VR游戏, 则需添加依赖模块HeadMountedDisplay <br/>
 
@@ -481,6 +481,7 @@ $UnrealEditor $Project -game -log -windowed -resx=1280 -rexy=720
 
 ## 运行脚本 {#运行脚本}
 
+`Windows` <br/>
 和Dirk文件夹同级 <br/>
 
 

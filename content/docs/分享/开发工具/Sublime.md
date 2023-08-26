@@ -1,7 +1,7 @@
 ---
 title: "Sublime"
 date: 2023-06-10T22:05:01
-lastmod: 2023-08-25T21:32:32+08:00
+lastmod: 2023-08-26T16:11:51+08:00
 draft: false
 weight: 2002
 ---
@@ -119,6 +119,11 @@ Option-Command-Shift-N；2-3 <br/>
 
 ### 打开项目 {#打开项目}
 
+命令行 &gt; Project Manager: Open Project <br/>
+
+
+### 添加文件夹 {#添加文件夹}
+
 命令行 &gt; Project: Add Folder <br/>
 
 
@@ -146,8 +151,8 @@ Command-Shift-F <br/>
 
 `Switch File Deluxe` <br/>
 
-| -       |                    |
-|---------|--------------------|
-| Windows | Alt-O              |
-| macOS   | Options-Command-UP |
+| -       |                   |
+|---------|-------------------|
+| Windows | Alt-O             |
+| macOS   | Option-Command-UP |
 
