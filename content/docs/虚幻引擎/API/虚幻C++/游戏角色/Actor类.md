@@ -1,9 +1,9 @@
 ---
 title: "Actor类"
 date: 2023-08-17T02:32:13
-lastmod: 2023-08-17T04:39:47+08:00
+lastmod: 2023-09-12T16:45:26+08:00
 draft: false
-weight: 1001
+weight: 2001
 ---
 
 ## AActor {#aactor}
@@ -19,12 +19,12 @@ weight: 1001
 ### 声明 {#声明}
 
 ```cpp
-/**
- * Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered.
- * @param  Parent					Parent to attach to.
- * @param  AttachmentRules			How to handle transforms and welding when attaching.
- * @param  SocketName				Optional socket to attach to on the parent.
- */
+//
+// Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered.
+// @param  Parent					Parent to attach to.
+// @param  AttachmentRules			How to handle transforms and welding when attaching.
+// @param  SocketName				Optional socket to attach to on the parent.
+//
 void AttachToComponent(USceneComponent* Parent, const FAttachmentTransformRules& AttachmentRules, FName SocketName = NAME_None);
 ```
 
