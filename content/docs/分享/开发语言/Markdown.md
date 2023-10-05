@@ -1,9 +1,9 @@
 ---
 title: "Markdown"
 date: 2023-06-10T23:35:59
-lastmod: 2023-08-14T13:30:09+08:00
+lastmod: 2023-10-04T11:33:09+08:00
 draft: false
-weight: 1002
+weight: 2002
 ---
 
 ## 便签 {#便签}
@@ -23,16 +23,16 @@ weight: 1002
 
 ## 插入图片 {#插入图片}
 
-\#+begin_example <br/>
-\![img](/pic/在本地运行ShooterGame示例项目/运行效果.png) <br/>
-\#+end_src <br/>
+````text
+![img](/pic/在本地运行ShooterGame示例项目/运行效果.png)
+````
 
 
 ## 插入连接 {#插入连接}
 
-\#+begin_example <br/>
-[参考](<https://learn.microsoft.com/zh-cn/cpp/cpp/conditional-operator-q?view=msvc-170>) <br/>
-\#+end_src <br/>
+````text
+[参考](https://learn.microsoft.com/zh-cn/cpp/cpp/conditional-operator-q?view=msvc-170)
+````
 
 
 ## 下划线 {#下划线}
