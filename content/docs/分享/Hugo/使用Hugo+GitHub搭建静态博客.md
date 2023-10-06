@@ -1,9 +1,9 @@
 ---
 title: "使用Hugo+GitHub搭建静态博客"
 date: 2023-06-08T10:57:46
-lastmod: 2023-08-16T13:07:23+08:00
+lastmod: 2023-10-05T22:37:48+08:00
 draft: false
-weight: 1001
+weight: 2001
 ---
 
 ## 说明 {#说明}
@@ -104,38 +104,41 @@ brew install hugo
     -   文章存放到content/post目录下 <br/>
 4.  文章模板 <br/>
     `yaml` <br/>
+    ```text
+    ---
+    author: "author"
+    title: "article title"
+    date: "2023-03-17"
+    description: "article description"
+    tags: [
+    "tag-1",
+    "tag-2",
+    ]
+    categories: [
+    "category",
+    ]
+    ---
+    简单介绍
     
-    > --- <br/>
-    > author: "author" <br/>
-    > title: "article title" <br/>
-    > date: "2023-03-17" <br/>
-    > description: "article description" <br/>
-    > tags: [ <br/>
-    > "tag-1", <br/>
-    > "tag-2", <br/>
-    > ] <br/>
-    > categories: [ <br/>
-    > "category", <br/>
-    > ] <br/>
-    > --- <br/>
-    > 
-    > 简单介绍 <br/>
-    > 
-    > &lt;!--more--&gt; <br/>
-    > 
-    > 正文 <br/>
+    <!- -more- ->
+    
+    正文
+    ```
+    **移除 `- -` 之间的空格** <br/>
 
 
 ## 构建静态网页 {#构建静态网页}
 
-| 选项                                    | 说明                    |           | 构建或测试 |
-|---------------------------------------|-----------------------|-----------|-------|
-| --theme=anubis                          | 设置主题                | -t anubis | both   |
-| --watch                                 | 修改文件后自动刷新浏览器 | -w        | server |
-| --buildDrafts                           | 包括标记为draft的笔记   | -D        | both   |
-| --buildFuture                           | 包括新发布笔记；检查date选项 | -F        | both   |
-| --baseUrl="<http://enjoy61.github.io/>" | 未配置编译，GithubPage部署会丢失样式 |           | both   |
-| --cleanDestinationDir                   | 将public文件夹中不再使用的文件删除 |           | hugo   |
+| 选项                                     | 说明                    |           | 构建或测试 |
+|----------------------------------------|-----------------------|-----------|-------|
+| - -theme=anubis                          | 设置主题                | -t anubis | both   |
+| - -watch                                 | 修改文件后自动刷新浏览器 | -w        | server |
+| - -buildDrafts                           | 包括标记为draft的笔记   | -D        | both   |
+| - -buildFuture                           | 包括新发布笔记；检查date选项 | -F        | both   |
+| - -baseUrl="<http://enjoy61.github.io/>" | 未配置编译，GithubPage部署会丢失样式 |           | both   |
+| - -cleanDestinationDir                   | 将public文件夹中不再使用的文件删除 |           | hugo   |
+
+**移除 `- -` 之间的空格** <br/>
 
 
 ### 本地测试 {#本地测试}
