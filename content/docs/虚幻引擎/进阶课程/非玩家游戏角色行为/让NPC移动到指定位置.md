@@ -1,7 +1,7 @@
 ---
 title: "让NPC移动到指定位置"
 date: 2023-10-19T19:05:23
-lastmod: 2023-10-19T22:16:15+08:00
+lastmod: 2023-10-19T22:19:14+08:00
 draft: false
 weight: 2002
 ---
@@ -115,7 +115,7 @@ AI Character / Controller / Navmesh <br/>
 
 `Content/VFX/Projectile` <br/>
 
-烟雾和火球无法扩散, 将烟雾效果扩大 <br/>
+烟雾和火球无法扩散, 将烟雾效果扩大, 火球效果缩小 <br/>
 
 -   NE_Burst <br/>
 -   NE_Fireball <br/>
