@@ -1,7 +1,7 @@
 ---
 title: "让NPC移动到指定位置"
 date: 2023-10-19T19:05:23
-lastmod: 2023-10-19T22:19:14+08:00
+lastmod: 2023-10-29T11:33:55+08:00
 draft: false
 weight: 2002
 ---
@@ -77,10 +77,18 @@ AI Character / Controller / Navmesh <br/>
     武器组件 <br/>
     
     <img src="/pic/非玩家游戏角色行为/让NPC移动到指定位置/weapon.png" width="1000" /> <br/> <br/>
+
+
+## 为NPC使能AI {#为npc使能ai}
+
+`BP_STUAICharacter` <br/>
+
 -   允许该游戏角色直接添加到场景中或动态生成; 设置控制器类型 <br/>
     
     <img src="/pic/非玩家游戏角色行为/让NPC移动到指定位置/set-ai-controller.png" width="1000" /> <br/> <br/>
+
 -   移除添加到场景中的BP_STUBaseCharacter, 添加BP_AIBaseCharacter <br/>
+
 -   运行游戏, 正常生成NPC和AI控制器 <br/>
     
     <img src="/pic/非玩家游戏角色行为/让NPC移动到指定位置/scene-ai.png" width="1000" /> <br/> <br/>
