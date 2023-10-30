@@ -1,12 +1,15 @@
 ---
 title: "NPC移动"
 date: 2023-10-29T12:08:54
-lastmod: 2023-10-29T21:30:44+08:00
+lastmod: 2023-10-30T16:29:13+08:00
 draft: false
 weight: 2002
 ---
 
 ## 设置NPC {#设置npc}
+
+
+### 蓝图 {#蓝图}
 
 `BP_STUAICharacter` <br/>
 
@@ -15,7 +18,22 @@ weight: 2002
 -   勾选 `Auto Possess AI` <br/>
 -   设置 `AI Controller Class` <br/>
 
-<img src="/pic/专题/NPC行为/NPC移动/ai-character.png" width="400" /> <br/>   <br/>
+<img src="/pic/专题/NPC行为/NPC移动/ai-character.png" width="400" /> <br/> <br/>
+
+
+### C++ {#c-plus-plus}
+
+`STUAICharacter` <br/>
+
+```cpp
+#include "AI/STUAIController.h"
+
+ASTUAICharacter::ASTUAICharacter(const FObjectInitializer &ObjInit) : Super(ObjInit)
+{
+    AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+    AIControllerClass = ASTUAIController::StaticClass();
+}
+```
 
 
 ## 囊括NPC移动范围 {#囊括npc移动范围}
@@ -96,10 +114,42 @@ weight: 2002
 
 ### 运行行为树 {#运行行为树}
 
+
+#### 蓝图 {#蓝图}
+
 `BP_STUAIController` <br/>
 添加节点: RunBehaviorTree; 在BeginPlay之后执行; 需设置BTAsset <br/>
 
 <img src="/pic/专题/NPC行为/NPC移动/run-bt.png" width="500" /> <br/> <br/>
+
+
+#### C++ {#c-plus-plus}
+
+-   添加属性: 保存行为树信息 <br/>
+    `STUAICharacter`         <br/>
+    ```cpp
+    class UBehaviorTree;
+    
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    UBehaviorTree *BehaviorTreeAsset;
+    ```
+-   运行行为树 <br/>
+    控制器每次切换控制Pawn, 执行对应的行为树 <br/>
+    `STUAIController` <br/>
+    ```cpp
+    #include "AI/STUAICharacter.h"
+    
+    void ASTUAIController::OnPossess(APawn *InPawn)
+    {
+        Super::OnPossess(InPawn);
+    
+        const auto STUCharacter = Cast<ASTUAICharacter>(InPawn);
+        if (STUCharacter)
+        {
+            RunBehaviorTree(STUCharacter->BehaviorTreeAsset);
+        }
+    }
+    ```
 
 
 ## 查看AI调试信息 {#查看ai调试信息}
