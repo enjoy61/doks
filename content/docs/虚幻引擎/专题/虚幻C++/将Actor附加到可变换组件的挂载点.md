@@ -1,9 +1,9 @@
 ---
 title: "将Actor附加到可变换组件的挂载点"
 date: 2023-06-21T21:56:47
-lastmod: 2023-08-17T04:43:29+08:00
+lastmod: 2023-11-05T21:14:53+08:00
 draft: false
-weight: 1001
+weight: 2001
 ---
 
 ## 说明 {#说明}
@@ -20,7 +20,7 @@ weight: 1001
 
 ## 挂载函数 AActor::AttachToComponent {#挂载函数-aactor-attachtocomponent}
 
-[AActor::AttachToComponent](/docs/虚幻引擎/api/虚幻c++/游戏角色/actor类/#aactor-attachtocomponent) <br/>
+[AActor::AttachToComponent](/docs/虚幻引擎/api/游戏角色/actor类/#aactor-attachtocomponent) <br/>
 
 
 ## 可变换组件: USceneComponent及其派生类 {#可变换组件-uscenecomponent及其派生类}
