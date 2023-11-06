@@ -1,7 +1,7 @@
 ---
 title: "使用EQS实现巡逻"
 date: 2023-11-03T21:33:53
-lastmod: 2023-11-04T14:37:03+08:00
+lastmod: 2023-11-06T10:48:34+08:00
 draft: false
 weight: 2012
 ---
@@ -49,107 +49,7 @@ EQS帮助NPC在给定的条件下对空间进行分析 <br/>
 
 ## 介绍EQS资产 {#介绍eqs资产}
 
-双击打开EQS_RandomRoam <br/>
-
-类似行为树图表 <br/>
-
-
-### 从Root出发, 可以设置各种生成器 {#从root出发-可以设置各种生成器}
-
-| -              |      |
-|----------------|------|
-| Points: Grid   | 方形点阵 |
-| Points: Circle | 圆圈点阵 |
-| Points: Cone   | 扇形点阵 |
-
-<img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/generators.png" width="500" /> <br/> <br/>
-
-
-#### 方形点阵 {#方形点阵}
-
-EQS_TestPawn身处方形点阵表示的位置区域中 <br/>
-
-| 可配置项      |      |
-|-----------|------|
-| GridHalfSize  | 点阵大小 |
-| Space Between | 点阵密度 |
-
-<img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/grid.png" width="1000" /> <br/> <br/>
-
-
-#### 圆圈点阵 {#圆圈点阵}
-
-只圆形周长存在有效位置 <br/>
-
-| 可配置项      |    |
-|-----------|----|
-| Circle Radius | 半径 |
-
-<img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/circle.png" width="1000" /> <br/> <br/>
-
-
-#### 扇形点阵 {#扇形点阵}
-
-EQS_TestPawn位于顶点处, 前进向量对应扇形中线 <br/>
-
-该模板用于选择前进时的下一个目的地, 因为前进向量的改变不会太突兀 <br/>
-
-| 可配置项                              |         |
-|-----------------------------------|---------|
-| Aligned Points Distance               | 射线上的点间距 |
-| Cone Degrees                          | 顶角    |
-| Angle Step                            | 射线密度 |
-| Range &gt; Data Binding = None, Range | 半径    |
-
-<img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/eqs-default.png" width="1000" /> <br/> <br/>
-
--   Projection Data &gt; Track Mode <br/>
-    设置投影 <br/>
-    
-    | -          |                    |
-    |------------|--------------------|
-    | Navigation | 默认值, 显示投影到导航网格体的点阵 |
-    | None       | 无投影, 会生成无法去到的位置点 |
-    
-    Track Mode = None <br/>
-    
-    <img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/trace-mode-none.png" width="1000" /> <br/> <br/>
--   Range &gt; Data Binding <br/>
-    半径模板选项 <br/>
-    
-    | -             |         |
-    |---------------|---------|
-    | None          | 默认, 固定值 |
-    | Query Params  |         |
-    | Random number | 设置随机数范围 |
-    
-    Range &gt; Data Binding = Random number <br/>
-    
-    <img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/range-random.png" width="1000" /> <br/> <br/>
-
-
-### 为扇形点阵添加限制条件 {#为扇形点阵添加限制条件}
-
-右键生成器, `Add Test > Distance` : 根据位置点到顶点的距离对位置点进行筛选 <br/>
-
-<img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/distance.png" width="500" /> <br/> <br/>
-
-| `Details > Filter > Filter Type` | 限制类型 |
-|----------------------------------|------|
-| Range                            | 给定范围 |
-| Minimum                          | 给定最小值 |
-
--   当前给定筛选距离范围, 最大值和最小值均为0, 所以无合适位置点 <br/>
-    表示位置点的球型显示为蓝色: 不是合适的位置点 <br/>
-    
-    <img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/filter-none.png" width="1000" /> <br/> <br/>
-
--   给定最小值 <br/>
-    为每个位置计算到顶点的距离, 根据距离, 给出权重: 距离越大的点, 选中的可能性更高 <br/>
-    
-    Float Value Min = 0.0: 颜色从红色到绿色, 权重由小变大 <br/>
-    
-    <img src="/pic/非玩家游戏角色行为/使用EQS实现巡逻/filter-min.png" width="1000" /> <br/> <br/>
+[随机目的地](/docs/虚幻引擎/专题/npc行为/介绍eqs资产/#随机目的地) <br/>
 
 
 ## 设置EQS资产 {#设置eqs资产}
