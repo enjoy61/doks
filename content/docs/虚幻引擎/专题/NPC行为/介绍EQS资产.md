@@ -1,7 +1,7 @@
 ---
 title: "介绍EQS资产"
 date: 2023-11-06T10:34:48
-lastmod: 2023-11-06T21:29:46+08:00
+lastmod: 2023-11-08T12:29:26+08:00
 draft: false
 weight: 2005
 ---
@@ -156,8 +156,14 @@ EQS_TestPawn位于顶点处, 前进向量对应扇形中线 <br/>
 
 -   权重比为1 <br/>
     最外层有几圈蓝色位置点, 均无效, 权重为0; 有效位置点由红色变为绿色, 权重由0变为1 <br/>
+    
+    <img src="/pic/专题/NPC行为/介绍EQS资产/distance-scoring.png" width="1000" /> <br/> <br/>
 -   权重比为-1 <br/>
+    
+    <img src="/pic/专题/NPC行为/介绍EQS资产/distance-scoring2.png" width="1000" /> <br/> <br/>
 -   给定权重比范围, -1 ~ 1 <br/>
+    
+    <img src="/pic/专题/NPC行为/介绍EQS资产/distance-scoring3.png" width="1000" /> <br/> <br/>
 
 
 ### 设置中心点 {#设置中心点}
@@ -171,6 +177,8 @@ EQS_TestPawn位于顶点处, 前进向量对应扇形中线 <br/>
 |-------------------------|------------------------------------------|
 | EnvQueryContext_Querier | 默认值, 使用EQS的上级Pawn; 可以自定义EnvQueryrContext |
 
+<img src="/pic/专题/NPC行为/介绍EQS资产/donut-center.png" width="1000" /> <br/> <br/>
+
 
 #### 环状点阵距离限制条件距离计算的参照点选项 {#环状点阵距离限制条件距离计算的参照点选项}
 
@@ -179,4 +187,6 @@ EQS_TestPawn位于顶点处, 前进向量对应扇形中线 <br/>
 | -                       |                                          |
 |-------------------------|------------------------------------------|
 | EnvQueryContext_Querier | 默认值, 使用EQS的上级Pawn; 可以自定义EnvQueryrContext |
+
+<img src="/pic/专题/NPC行为/介绍EQS资产/distance-to.png" width="1000" /> <br/> <br/>
 

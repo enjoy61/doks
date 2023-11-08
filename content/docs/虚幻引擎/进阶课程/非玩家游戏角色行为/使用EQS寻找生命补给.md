@@ -1,7 +1,7 @@
 ---
 title: "使用EQS寻找生命补给"
 date: 2023-11-07T21:14:10
-lastmod: 2023-11-07T21:14:12+08:00
+lastmod: 2023-11-08T15:08:53+08:00
 draft: false
 weight: 2014
 ---
@@ -18,7 +18,7 @@ AI / EQS / Find Health Pickup <br/>
 -   [X] 使用C++实现Decorator <br/>
 
 
-## 暂时修改声明补给外观 {#暂时修改声明补给外观}
+## 暂时修改生命补给外观 {#暂时修改生命补给外观}
 
 EQS标记也是亮色 <br/>
 
@@ -132,7 +132,7 @@ EQS标记也是亮色 <br/>
     设置时长为2s <br/>
 4.  添加序列 <br/>
 5.  为序列添加任务: RunEQSQuery <br/>
-6.  设置EQS模板 <br/>
+6.  设置EQS <br/>
     
     -   `Details > EQS > EQSRequest > Query Template` , 设置为EQS_FindHealthPickup <br/>
     -   `Details > Blackboard > Blackboard Key` , 设置为AimLocation <br/>
@@ -153,7 +153,7 @@ EQS标记也是亮色 <br/>
     
     <img src="/pic/非玩家游戏角色行为/使用EQS寻找生命补给/f8.png" width="700" /> <br/> <br/>
 3.  拖动距离NPC最近的生命补给: NPC寻找并去到此时距离最近的生命补给位置 <br/>
-4.  点击 `Pause` , 将所有生命补给移动到墙后, 点击 `Resume simulation` <br/>
+4.  点击 `Pause simulation` , 将所有生命补给移动到墙后, 点击 `Resume play-in-editor session` <br/>
     序列停止, NPC循环执行Wait任务 <br/>
 
 
