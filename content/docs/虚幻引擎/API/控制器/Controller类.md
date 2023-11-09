@@ -1,7 +1,7 @@
 ---
 title: "Controller类"
 date: 2023-11-05T20:56:22
-lastmod: 2023-11-09T20:51:39+08:00
+lastmod: 2023-11-09T20:53:51+08:00
 draft: false
 weight: 2001
 ---
@@ -50,7 +50,7 @@ FORCEINLINE APawn* GetPawn() const { return Pawn; }
 访问当前Pawn <br/>
 
 ```cpp
-/** Templated version of GetPawn, will return nullptr if cast fails */
+// Templated version of GetPawn, will return nullptr if cast fails
 template<class T>
 T* GetPawn() const
 {

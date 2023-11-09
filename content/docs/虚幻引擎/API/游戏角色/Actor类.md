@@ -1,7 +1,7 @@
 ---
 title: "Actor类"
 date: 2023-11-05T20:50:41
-lastmod: 2023-11-05T20:50:50+08:00
+lastmod: 2023-11-09T20:57:26+08:00
 draft: false
 weight: 2002
 ---
@@ -51,12 +51,12 @@ Actor对象由各种Component组成，所有组件可以根据需求进行组装
 ### 声明 {#声明}
 
 ```cpp
-/**
- * Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered.
- * @param  Parent					Parent to attach to.
- * @param  AttachmentRules			How to handle transforms and welding when attaching.
- * @param  SocketName				Optional socket to attach to on the parent.
- */
+// **
+// * Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered.
+// * @param  Parent					Parent to attach to.
+// * @param  AttachmentRules			How to handle transforms and welding when attaching.
+// * @param  SocketName				Optional socket to attach to on the parent.
+// *
 void AttachToComponent(USceneComponent* Parent, const FAttachmentTransformRules& AttachmentRules, FName SocketName = NAME_None);
 ```
 
@@ -94,7 +94,7 @@ virtual void SetOwner( AActor* NewOwner );
 访问上级 <br/>
 
 ```cpp
-/** Get the owner of this Actor, used primarily for network replication. */
+// Get the owner of this Actor, used primarily for network replication
 UFUNCTION(BlueprintCallable, Category=Actor)
 AActor* GetOwner() const;
 ```
@@ -106,7 +106,7 @@ AActor* GetOwner() const;
 访问上级 <br/>
 
 ```cpp
-/** Templated version of GetOwner(), will return nullptr if cast fails */
+// Templated version of GetOwner(), will return nullptr if cast fails
 template< class T >
 T* GetOwner() const
 {

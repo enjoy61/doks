@@ -1,7 +1,7 @@
 ---
 title: "Pawn类"
 date: 2023-11-05T20:50:38
-lastmod: 2023-11-05T20:50:56+08:00
+lastmod: 2023-11-09T20:58:38+08:00
 draft: false
 weight: 2003
 ---
@@ -60,7 +60,7 @@ _UObject也有StaticClass，UObjectBaseUtility没有_ <br/>
 获取指定类型控制器 <br/>
 
 ```cpp
-/** Returns controller for this actor cast to the template type. May return NULL is the cast fails. */
+// Returns controller for this actor cast to the template type. May return NULL is the cast fails
 template < class T >
 T* GetController() const
 {
@@ -98,7 +98,7 @@ T* GetController() const
 设置AIController类型 <br/>
 
 ```cpp
-/** Default class to use when pawn is controlled by AI. */
+// Default class to use when pawn is controlled by AI
 UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName="AI Controller Class"), Category=Pawn)
 TSubclassOf<AController> AIControllerClass;       
 ```

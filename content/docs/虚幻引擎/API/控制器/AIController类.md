@@ -1,7 +1,7 @@
 ---
 title: "AIController类"
 date: 2023-11-05T20:56:44
-lastmod: 2023-11-05T20:56:45+08:00
+lastmod: 2023-11-09T20:55:06+08:00
 draft: false
 weight: 2003
 ---
@@ -26,7 +26,7 @@ void SetPerceptionComponent(UAIPerceptionComponent& InPerceptionComponent);
 运行行为树 <br/>
 
 ```cpp
-/** Starts executing behavior tree. */
+// Starts executing behavior tree
 UFUNCTION(BlueprintCallable, Category = "AI")
 virtual bool RunBehaviorTree(UBehaviorTree* BTAsset);
 ```

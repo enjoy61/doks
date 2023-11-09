@@ -1,9 +1,9 @@
 ---
 title: "使用EQS寻找生命补给"
 date: 2023-11-07T21:14:10
-lastmod: 2023-11-08T15:08:53+08:00
+lastmod: 2023-11-09T21:00:21+08:00
 draft: false
-weight: 2014
+weight: 2001
 ---
 
 ## 说明 {#说明}
@@ -169,7 +169,7 @@ EQS标记也是亮色 <br/>
 `protected` <br/>
 
 ```cpp
-/** calculates raw, core value of decorator's condition. Should not include calling IsInversed */
+// calculates raw, core value of decorator's condition. Should not include calling IsInversed
 virtual bool CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const; 
 ```
 
