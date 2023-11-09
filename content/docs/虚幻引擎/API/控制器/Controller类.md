@@ -1,7 +1,7 @@
 ---
 title: "Controller类"
 date: 2023-11-05T20:56:22
-lastmod: 2023-11-05T20:56:23+08:00
+lastmod: 2023-11-09T20:51:39+08:00
 draft: false
 weight: 2001
 ---
@@ -40,7 +40,7 @@ virtual void OnPossess(APawn* InPawn);
 访问当前Pawn <br/>
 
 ```cpp
-/** Getter for Pawn */
+// Getter for Pawn
 FORCEINLINE APawn* GetPawn() const { return Pawn; }
 ```
 
