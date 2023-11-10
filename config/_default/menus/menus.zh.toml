@@ -1,6 +1,6 @@
 [[main]]
   name = "笔记"
-  url = "/docs/分享/Hugo/使用Hugo+Github搭建静态博客/"
+  url = "/docs/build-blog/使用Hugo+GitHub搭建静态博客/"
   weight = 10
 
 [[main]]
