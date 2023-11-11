@@ -1,7 +1,7 @@
 ---
 title: "低饱和高亮度配色主题"
 date: 2023-08-16T14:16:57
-lastmod: 2023-11-03T09:38:14+08:00
+lastmod: 2023-11-11T11:41:14+08:00
 tags: ["ColorTheme", "Emacs", "VScode", "iTerm2"]
 categories: ["Hacking"]
 draft: false
