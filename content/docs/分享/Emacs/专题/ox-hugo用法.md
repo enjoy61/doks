@@ -1,7 +1,7 @@
 ---
 title: "ox-hugo用法"
 date: 2023-11-11T13:33:01
-lastmod: 2023-11-11T13:49:34+08:00
+lastmod: 2023-11-11T14:31:29+08:00
 draft: false
 weight: 2001
 ---
@@ -182,21 +182,23 @@ baz = zoo
 
 ```org
 #+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: ./      
 #+HUGO_AUTO_SET_LASTMOD: t
 #+HUGO_DRAFT: false
 #+HUGO_FRONT_MATTER_FORMAT: yaml
-#+HUGO_SECTION: ./
 ```
 
 
 ### 导出子树时可以指定文件名, 子树名作为标题 {#导出子树时可以指定文件名-子树名作为标题}
 
 ```org
+:PROPERTIES:         
 :EXPORT_FILE_NAME: 导出文件名
+:END:         
 ```
 
 
-### 子树可以更细致的对文章分区 {#子树可以更细致的对文章分区}
+### 子树可以更细致地对文章分区 {#子树可以更细致地对文章分区}
 
 ```org
 :PROPERTIES:
