@@ -27,8 +27,12 @@ table {
   }
 
   tr th {
-    background: $gray-100;
+    background: $tango-table-th-bg;
   }
+  tr td{
+    background: $tango-table-td-bg;
+  }
+
 }
 
 .imageList {

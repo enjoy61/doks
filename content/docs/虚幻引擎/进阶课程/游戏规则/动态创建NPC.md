@@ -1,7 +1,7 @@
 ---
 title: "动态创建NPC"
 date: 2023-11-10T16:59:54
-lastmod: 2023-11-12T18:22:39+08:00
+lastmod: 2023-11-12T18:41:29+08:00
 draft: false
 weight: 2003
 ---

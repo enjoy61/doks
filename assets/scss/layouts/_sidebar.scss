@@ -74,8 +74,9 @@ a.docs-link {
   padding-top: 0.125rem;
 }
 
+// toc下划线颜色
 .page-links li:not(:first-child) {
-  border-top: 1px dashed $gray-200;
+  border-top: 1px dashed $tango-toc-line;
 }
 
 .page-links a {

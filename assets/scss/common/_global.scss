@@ -121,7 +121,7 @@ body {
 @include media-breakpoint-up(lg) {
   .docs-sidebar {
     order: 0;
-    border-right: 1px solid $gray-200;
+    border-right: 1px solid $tango-border;
   }
 
   @supports ((position:-webkit-sticky) or (position:sticky)) {
@@ -178,6 +178,7 @@ body {
     top: 4rem;
     height: calc(100vh - 4rem);
     overflow-y: auto;
+    border-left: 1px solid $tango-border;
   }
 
   .docs-toc-top {
@@ -205,6 +206,7 @@ body {
 @include media-breakpoint-up(lg) {
   .docs-navigation {
     margin-bottom: -1rem;
+    border-top: 1px solid $tango-border;
   }
 
   .docs-navigation a {
