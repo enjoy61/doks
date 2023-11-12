@@ -292,7 +292,7 @@ body {
 
 // 文章目录
 .my-toc a.active {
-  color: $primary;
+  color: $tango-toc-highlight;
   font-weight: 800;
   transition: all .25s ease-in-out
 }

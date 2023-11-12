@@ -25,21 +25,46 @@ $pink-100: #fcfaff;
 $pink-500: #d32e9d;
 
 $tango-blue: #2A4A83;
+$tango-headbar-blue: #46629D;
 $tango-purple: #563863;
-$tango-primary: $tango-purple;
+$tango-red: #961D13;
+$tango-orange: #A7551F;
+$tango-green: #47663C;
+$tango-light-grey: #E5E6E7;
+$tango-primary: $tango-blue;
 $tango-bg: #EEEEEC;
 $tango-border: $gray-400;
-$tango-header-bg: #E5E6E7;
+$tango-header-bg: #E6E6E6;
 $tango-toc-line: #8F918D;
-$tango-header-bar: #46629D;
+$tango-header-bar: $tango-headbar-blue;
 $tango-table-th-bg: $gray-400;
 $tango-table-td-bg: $gray-300;
-$tango-table-border: $gray-200;
+$tango-table-border: $gray-500;
+$tango-toc-highlight: $tango-red;
+$tango-toc-hover-highlight: $tango-green;
+$tango-article-highlight: $tango-purple;
+$tango-article-hover-highlight: $tango-green;
+$tango-headbar-highlight: $tango-orange;
+$tango-headbar-hover-highlight: $tango-orange;
+$tango-headerbar: $tango-header-bg;
+$tango-scrollbar: $gray-300;
+$tango-scrollbar-bg: $tango-bg;
+$tango-scrollbar-hover: $gray-400;
+$tango-scrollbar-hover-bg: $tango-bg;
+$tango-block: #D3D3D3;
+
+$final-primary: $tango-blue;
+$final-headbar: $tango-headerbar;
+$final-scrollbar: $tango-scrollbar;
+$final-scrollbar-bg: $tango-scrollbar-bg;
+$final-scrollbar-hover: $tango-scrollbar-hover;
+$final-scrollbar-hover-bg: $tango-scrollbar-hover-bg;
+$final-block: $tango-block;
 
 $orange-primary: #c0554d;
 // $primary: $purple;
 // $primary: #c05b4d;
-$primary: $tango-primary;
+$primary: $final-primary;
 
 $color-btn-bg: $pink-500;
 $color-btn-border: darken($pink-500, 5%);
@@ -157,7 +182,7 @@ $navbar-padding-x:                  null;
 $navbar-nav-link-padding-x:         0.5rem;
 
 $navbar-light-color:                $black;
-$navbar-light-hover-color:          $primary;
+$navbar-light-hover-color:          $tango-headbar-hover-highlight;
 $navbar-light-active-color:         $primary;
 
 // Cards

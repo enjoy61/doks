@@ -1,7 +1,7 @@
 ---
 title: "动态创建NPC"
 date: 2023-11-10T16:59:54
-lastmod: 2023-11-12T18:41:29+08:00
+lastmod: 2023-11-12T21:24:39+08:00
 draft: false
 weight: 2003
 ---
@@ -150,7 +150,8 @@ else
 
 [UFunctions](https://docs.unrealengine.com/5.1/en-US/ufunctions-in-unreal-engine/) <br/>
 
-<img src="pic/游戏规则/动态创建NPC/BlueprintNativeEvent.png" alt="BlueprintNativeEvent.png" width="1000" /> <br/>
+<img src="/pic/游戏规则/动态创建NPC/BlueprintNativeEvent.png" width="1000" /> <br/> <br/>
+
 BlueprintNativeEvent: 这标记函数通常在蓝图中被覆写 <br/>
 
 也可以在C++中覆写, 在加上后缀_Implementation的同名函数中给出实现 <br/>

@@ -2,41 +2,85 @@
 
 // Source: https://material.io/design/color/dark-theme.html
 
+$zdoc-pink: #f9718f;
+$zdoc-yellow: #f8d778;
+$zdoc-green: #acc883;
+
 $zdoc-bg-dark: #212121;
 $zdoc-header-bg-dark: #403e41;
+$zdoc-header-bar-dark: $zdoc-header-bg-dark;
 $zdoc-border-dark: #413f42;
-$zdoc-primary-dark: #f9718f;
-$zdoc-content-dark: #f8d778;
-$zdoc-highlight-dark: #acc883;
+$zdoc-primary-dark: $zdoc-pink;
+$zdoc-content-dark: $zdoc-yellow;
+$zdoc-highlight-dark: $zdoc-green;
 $zdoc-block-dark: #57503b;
 $zdoc-overlay-dark: #2a2c37;
 $zdoc-table-header-dark: #2d2a2e;
 $zdoc-table-data-dark: $zdoc-bg-dark;
-$zdoc-header-bar-dark: $zdoc-header-bg-dark;
 
-$body-bg-dark: $zdoc-bg-dark;
+
+$dark-tango-bg: #2F3436;
+$dark-tango-headbar-bg: #222526;
+$dark-tango-green: #86C742;
+$dark-tango-light-green: #BEF080;
+$dark-tango-yellow: #F9E86B;
+$dark-tango-blue: #97C3FA;
+$dark-tango-red: #E75852;
+$dark-tango-pink: #E1B5E0;
+$dark-tango-grey: #979898;
+$dark-tango-white: #EEEEEC;
+$dark-tango-grey-yellow: #BFBE3D;
+$dark-tango-primary: $dark-tango-green;
+$dark-tango-headbar: #317700;
+$dark-tango-table-head: #4E5253;
+$dark-tango-table-data: #373B3C;
+$dark-tango-table-border: #2D2826;
+$dark-tango-block: #767B7E;
+$dark-tango-hover: $dark-tango-red;
+$dark-tango-border: #4C4D4D;
+$dark-tango-search: #4C4D4D;
+
+$dark-final-primary: $dark-tango-green;
+$dark-final-bg: $dark-tango-bg;
+$dark-final-headbar-bg: $dark-tango-headbar-bg;
+$dark-final-content-highlight: $dark-final-primary;
+$dark-final-enter-button: $dark-final-primary;
+$dark-final-toc-highlight: $dark-tango-blue;
+$dark-final-sidebar-highlight: $dark-tango-yellow;
+$dark-final-headbar-highlight: $dark-tango-pink;
+$dark-final-headbar: $dark-tango-headbar-bg;
+$dark-final-table-head: $dark-tango-table-head;
+$dark-final-table-data: $dark-tango-table-data;
+$dark-final-table-border: $dark-tango-table-border;
+$dark-final-block: $dark-tango-block;
+$dark-final-hover: $dark-tango-hover;
+$dark-final-border: $dark-tango-border;
+$dark-final-search: $dark-tango-search;
+$dark-final-white: $white;
+
+$body-bg-dark: $dark-final-bg;
 
 // 搜索框，文本块和未识别语言的代码块等
 // $body-overlay-dark: darken($body-bg-dark, 2.5%);
-$body-overlay-dark: $zdoc-overlay-dark;
+$body-overlay-dark: $dark-final-search;
 
 /*
 $border-dark: darken($body-bg-dark, 2.5%);
 */
-$border-dark: $zdoc-border-dark;
+$border-dark: $dark-final-border;
 
 // $body-color-dark: $gray-300;
-$body-color-dark: white;
+$body-color-dark: $dark-final-white;
 $dots-dark: darken($body-color-dark, 50%);
 
 // $link-color-dark: $blue-300;
-$link-color-dark: $zdoc-primary-dark;
+$link-color-dark: $dark-final-hover;
 
 // $button-color-dark: $link-color-dark;
 
 // get-started
 // $button-color-dark: $link-color-dark;
-$button-color-dark: $zdoc-content-dark;
+$button-color-dark: $dark-final-enter-button;
 
 $focus-color-dark: lighten($link-color-dark, 2.5%);
 
@@ -54,7 +98,7 @@ $navbar-dark-active-color:          $link-color-dark;
 // 正文链接
 [data-dark-mode] body a {
   // color: $link-color-dark;
-  color: $zdoc-content-dark;
+  color: $dark-final-content-highlight;
 }
 
 [data-dark-mode] body a.text-body {
@@ -110,7 +154,7 @@ $navbar-dark-active-color:          $link-color-dark;
 // 标题栏
 [data-dark-mode] body .navbar {
   // background: $body-bg-dark;
-  background: $zdoc-header-bg-dark;
+  background: $dark-final-headbar-bg;
   border-bottom: 1px solid $border-dark;
 }
 
@@ -136,10 +180,10 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $link-color-dark;
 }
 
-// 标题高亮
+// headbar高亮
 [data-dark-mode] body .offcanvas .nav-link.active {
   // color: $link-color-dark;
-  color: $zdoc-highlight-dark;
+  color: $dark-final-headbar-highlight;
 }
 
 [data-dark-mode] body .navbar-light .navbar-brand {
@@ -243,7 +287,7 @@ $navbar-dark-active-color:          $link-color-dark;
 // 目录结构
 [data-dark-mode] body .btn-toggle-nav a.active {
   // color: $link-color-dark;
-  color: $zdoc-highlight-dark;
+  color: $dark-final-sidebar-highlight;
 }
 
 [data-dark-mode] body .navbar-light .navbar-text a {
@@ -349,7 +393,7 @@ $navbar-dark-active-color:          $link-color-dark;
 // 文本块和代码块未识别语言
 [data-dark-mode] body code:not(.hljs) {
   // background: $body-overlay-dark;
-  background: $zdoc-block-dark;
+  background: $dark-final-block;
   color: $body-color-dark;
 }
 
@@ -370,10 +414,15 @@ $navbar-dark-active-color:          $link-color-dark;
   border-top: 1px solid $border-dark;
 }
 
-[data-dark-mode] body .docs-links,
+[data-dark-mode] body .docs-links{
+  scrollbar-width: thin;
+  scrollbar-color: $body-bg-dark $body-bg-dark;
+}
+
 [data-dark-mode] body .docs-toc {
   scrollbar-width: thin;
   scrollbar-color: $body-bg-dark $body-bg-dark;
+  border-left: 1px solid $dark-final-border;
 }
 
 [data-dark-mode] body .docs-links::-webkit-scrollbar,
@@ -623,23 +672,23 @@ $navbar-dark-active-color:          $link-color-dark;
 // 文章目录
 [data-dark-mode] .my-toc a.active {
   // color: $link-color-dark;
-  color: $zdoc-highlight-dark;
+  color: $dark-final-toc-highlight;
 }
 
 [data-dark-mode] table {
   tr th,
   tr td {
-    border: $padding-1 solid $border-dark;
-    background: $zdoc-table-data-dark;
+    border: $padding-1 solid $dark-final-table-border;
+    background: $dark-final-table-data;
   }
 
   tr th {
-    background: $zdoc-table-header-dark;
+    background: $dark-final-table-head;
    }
 }
 
 [data-dark-mode] .header-bar {
-  border-image-source: linear-gradient(90deg, $zdoc-header-bar-dark, $zdoc-header-bar-dark 50%, $zdoc-header-bar-dark);
+  border-image-source: linear-gradient(90deg, $dark-final-headbar, $dark-final-headbar 50%, $dark-final-headbar);
 }
 
 // 正文

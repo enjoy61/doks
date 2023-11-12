@@ -123,11 +123,15 @@ button#doks-versions {
 
 .offcanvas .nav-link:hover,
 .offcanvas .nav-link:focus {
-  color: $link-color;
+//  color: $link-color;
+  color: $tango-headbar-hover-highlight;
+  font-weight: bold;
 }
 
 .offcanvas .nav-link.active {
-  color: $link-color;
+//  color: $link-color;
+  color: $tango-headbar-highlight;
+  font-weight: bold;
 }
 
 /*
@@ -141,9 +145,8 @@ button#doks-versions {
 .header-bar {
   border-top: 4px solid;
 //  border-image-source: linear-gradient(90deg, $primary, #8ed6fb 50%, #d32e9d);
-  border-image-source: linear-gradient(90deg, $purple, #8ed6fb 50%, #d32e9d);
-//  border-image-source: linear-gradient(90deg, $tango-header-bar, $tango-header-bar 50%, $tango-header-bar);
-//  border-image-source: linear-gradient(90deg, $purple, $purple 50%, $purple);
+//  border-image-source: linear-gradient(90deg, $purple, #8ed6fb 50%, #d32e9d);
+  border-image-source: linear-gradient(90deg, $final-headbar, $final-headbar 50%, $final-headbar);
   border-image-slice: 1;
 }
 

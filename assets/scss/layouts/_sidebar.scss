@@ -1,7 +1,7 @@
 .docs-links,
 .docs-toc {
   scrollbar-width: thin;
-  scrollbar-color: $white $white;
+  scrollbar-color: $final-scrollbar $final-scrollbar-bg;
 }
 
 .docs-links::-webkit-scrollbar,
@@ -22,7 +22,7 @@
 .docs-links:hover,
 .docs-toc:hover {
   scrollbar-width: thin;
-  scrollbar-color: $gray-200 $white;
+  scrollbar-color: $final-scrollbar-hover $final-scrollbar-hover-bg;
 }
 
 .docs-links:hover::-webkit-scrollbar-thumb,
@@ -91,7 +91,9 @@ a.docs-link {
 .docs-link.active,
 .page-links a:hover {
   text-decoration: none;
-  color: $link-color;
+  //  color: $link-color;
+  color: $tango-toc-hover-highlight;
+  font-weight: bold;
 }
 
 .nav-link.active,

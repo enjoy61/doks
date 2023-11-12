@@ -178,11 +178,14 @@ pre {
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: transparent;
-  color: $link-color;
+//  color: $link-color;
+  color: $tango-article-hover-highlight;
+  font-weight: bold;
 }
 
 .btn-toggle-nav a.active {
-  color: $link-color;
+  font-weight: bold;
+  color: $tango-article-highlight;
 }
 
 .dropdown-menu {
@@ -240,7 +243,7 @@ pre {
 
 .dropdown-menu-main .dropdown-item:hover {
   background-color: transparent;
-  color: $primary;
+  color: $tango-headbar-hover-highlight;
 }
 
 .dropdown-menu-main .dropdown-item.active {
