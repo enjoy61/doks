@@ -1,7 +1,7 @@
 ---
 title: "Sublime使用clang-format"
 date: 2023-11-11T14:53:10
-lastmod: 2023-11-11T15:43:50+08:00
+lastmod: 2023-11-11T17:12:31+08:00
 draft: false
 weight: 2003
 ---
@@ -112,10 +112,10 @@ where clang-format
         "AccessModifierOffset": "-4",
         "SortIncludes": false,
         "AllowShortBlocksOnASingleLine": true,
+        "AllowShortIfStatementsOnASingleLine": true,
         "AlignAfterOpenBracket": "Align",
         "AllowShortFunctionsOnASingleLine": "Inline",
         "PointerAlignment": "Right",
     }
     ```
-    AllowShortBlocksOnASingleLine不生效 <br/>
 

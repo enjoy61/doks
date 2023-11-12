@@ -1,7 +1,7 @@
 ---
 title: "ox-hugo"
 date: 2023-08-21T10:10:05
-lastmod: 2023-08-21T13:30:21+08:00
+lastmod: 2023-11-11T18:47:10+08:00
 draft: false
 weight: 2014
 ---
@@ -30,4 +30,9 @@ weight: 2014
 |---------|-----------|
 | C-c h s | 导出所属子树 |
 | C-c h a | 导出文件内所有子树 |
+
+
+## 专题 {#专题}
+
+[ox-hugo用法](/docs/分享/emacs/专题/ox-hugo用法/#ox-hugo用法) <br/>
 
