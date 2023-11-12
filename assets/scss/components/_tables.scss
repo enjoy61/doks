@@ -23,7 +23,8 @@ table {
   tr th,
   tr td {
     padding: $padding-8 $padding-16;
-    border: $padding-1 solid $border-color;
+//    border: $padding-1 solid $border-color;
+    border: $padding-1 solid $tango-table-border;
   }
 
   tr th {

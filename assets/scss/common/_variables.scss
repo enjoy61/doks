@@ -24,7 +24,18 @@ $blue-300: #8ed6fb;
 $pink-100: #fcfaff;
 $pink-500: #d32e9d;
 
-$tango-primary: #563863;
+$tango-blue: #2A4A83;
+$tango-purple: #563863;
+$tango-primary: $tango-purple;
+$tango-bg: #EEEEEC;
+$tango-border: $gray-400;
+$tango-header-bg: #E5E6E7;
+$tango-toc-line: #8F918D;
+$tango-header-bar: #46629D;
+$tango-table-th-bg: $gray-400;
+$tango-table-td-bg: $gray-300;
+$tango-table-border: $gray-200;
+
 $orange-primary: #c0554d;
 // $primary: $purple;
 // $primary: #c05b4d;
@@ -34,13 +45,6 @@ $color-btn-bg: $pink-500;
 $color-btn-border: darken($pink-500, 5%);
 $color-btn-text: $white;
 
-
-$tango-table-th-bg: $gray-400;
-$tango-table-td-bg: $gray-300;
-$tango-border: $gray-400;
-$tango-bg: #EEEEEC;
-$tango-header-bg: #E5E6E7;
-$tango-toc-line: $gray-400;
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
